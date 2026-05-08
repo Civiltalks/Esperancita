@@ -6,8 +6,8 @@ Data: 2026-05-08 16:20:48 -03:00
 
 - Remoto: `https://github.com/Civiltalks/Esperancita.git`
 - Branch local: `main`
-- Branches remotos detectados: nenhum
-- Repositorio remoto detectado como vazio pela API GitHub.
+- Branch remota publicada: `origin/main`
+- Repositorio remoto estava vazio antes da primeira publicacao.
 
 ## Estado local
 
@@ -23,53 +23,42 @@ bde0ee8 chore: bootstrap Esperancita OpenClaw repository
 - Scan de segredos em arquivos staged: sem ocorrencias de tokens reais conhecidos.
 - Pastas privadas, backups, sessoes, logs e configuracoes sensiveis continuam protegidas por `.gitignore`.
 
-## Tentativa de publicacao
+## Publicacao
 
-O push para `origin/main` foi tentado com autenticacao transitoria, sem salvar token em arquivo, remote URL ou commit.
+O push para `origin/main` foi executado com autenticacao transitoria, sem salvar token em arquivo, remote URL ou commit.
 
-Resultado:
+Resultado final:
 
 ```text
-remote: Permission to Civiltalks/Esperancita.git denied to Civiltalks.
-fatal: unable to access 'https://github.com/Civiltalks/Esperancita.git/': The requested URL returned error: 403
+branch 'main' set up to track 'origin/main'.
+To https://github.com/Civiltalks/Esperancita.git
+ * [new branch]      main -> main
 ```
 
-Interpretacao:
+Observacao:
 
-- A API autentica a conta `Civiltalks` e mostra permissao administrativa no repositorio.
-- A operacao Git HTTPS foi recusada pelo GitHub com erro 403.
-- O bloqueio mais provavel e permissao insuficiente do token para escrita de conteudo via Git, restricao fine-grained do PAT, regra de organizacao, ou autorizacao SSO/regra de seguranca pendente.
+- Uma tentativa anterior com token sem permissao efetiva de escrita retornou `403 Permission denied`.
+- O token correto foi usado apenas em memoria para autenticar o push final.
+- Nenhum token foi gravado em `.git/config`, relatorios, commits ou arquivos versionados.
 
-## O que falta
+## Status final
 
-Gerar ou ajustar um token GitHub com:
+- `main` local rastreia `origin/main`.
+- O repositorio GitHub contem a base inicial da Esperancita/OpenClaw.
+- Segredos, sessoes e backups permanecem fora do versionamento.
+- A pasta de backup local continua em `_BACKUP_INSTALACAO_OPENCLAW`.
 
-- acesso ao repositorio `Civiltalks/Esperancita`;
-- permissao `Contents: Read and write`;
-- permissao para criar branch/commit, quando o GitHub solicitar;
-- autorizacao SSO/organizacao, se o GitHub exibir essa exigencia.
-
-Depois, executar:
+## Comandos seguros para verificacao
 
 ```powershell
 cd "C:\Users\aliss\OneDrive\Desktop\Open Claw"
-git push -u origin main
-```
-
-Se o Git Credential Manager abrir uma janela, autenticar com a conta GitHub que tem acesso de escrita ao repositorio.
-
-## Comando local seguro para verificar antes de tentar de novo
-
-```powershell
 git status --short --branch
 git log --oneline -1
 git remote -v
 ```
 
-O status esperado antes do push e:
+O status esperado apos a publicacao e:
 
 ```text
-## main
+## main...origin/main
 ```
-
-ou `## main` com commits locais ainda nao publicados.

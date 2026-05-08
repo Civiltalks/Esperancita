@@ -47,6 +47,7 @@ feat: add workflow documentation
 - Remoto `origin` conectado em `https://github.com/Civiltalks/Esperancita.git`.
 - Repositorio remoto estava vazio, sem branches.
 - Commit local inicial criado: `bde0ee8 chore: bootstrap Esperancita OpenClaw repository`.
-- Tentativa de `git push -u origin main` retornou `403 Permission denied`.
-- O token nao foi salvo em arquivo, commit ou remote URL.
-- Proximo passo: ajustar token/permissao GitHub para escrita de conteudo e repetir o push.
+- Primeira tentativa de `git push -u origin main` retornou `403 Permission denied` por token sem escrita efetiva via Git.
+- Nova autenticacao transitoria foi validada e o push para `origin/main` foi concluido.
+- O token nao foi salvo em arquivo, commit, relatorio ou remote URL.
+- Proximo passo operacional: usar branches `feature/*` ou `fix/*` para novas mudancas e manter `main` como estado estavel.
