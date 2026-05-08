@@ -41,3 +41,12 @@ feat: add workflow documentation
 - Nunca versionar sessoes, OAuth, logs, backups ou `openclaw.json` real.
 - Fazer backup local antes de mudancas estruturais.
 
+## Status em 2026-05-08
+
+- Git local inicializado em `main`.
+- Remoto `origin` conectado em `https://github.com/Civiltalks/Esperancita.git`.
+- Repositorio remoto estava vazio, sem branches.
+- Commit local inicial criado: `bde0ee8 chore: bootstrap Esperancita OpenClaw repository`.
+- Tentativa de `git push -u origin main` retornou `403 Permission denied`.
+- O token nao foi salvo em arquivo, commit ou remote URL.
+- Proximo passo: ajustar token/permissao GitHub para escrita de conteudo e repetir o push.
