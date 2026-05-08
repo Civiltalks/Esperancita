@@ -15,9 +15,53 @@ Rodar OpenClaw/Esperancita 24/7 em VPS Ubuntu 24.04, sem depender do Windows loc
 
 `srv1577551.hstgr.cloud` (`2.24.30.151`)
 
-## Pendencia bloqueante
+## Status em 2026-05-08
 
-Autorizar chave SSH ou fornecer acesso seguro. A API Hostinger nao entrega senha root.
+A execucao deve ficar na VPS, nao no Windows. O Windows esta sendo usado apenas
+como estacao de bootstrap e backup ate o acesso SSH da VPS estar funcional.
+
+### Acoes realizadas
+
+- Chave SSH dedicada criada localmente:
+  `C:\Users\aliss\.ssh\esperancita_hostinger_ed25519`.
+- Chave publica registrada na Hostinger e anexada a VPS `1577551`.
+- API Hostinger validada por variavel de ambiente local, sem gravar token em arquivo.
+- VPS `1577551` reiniciada pela API.
+- Recovery mode usado para diagnosticar e tentar recuperar acesso SSH.
+- Backups criados no disco da VPS antes de alteracoes, em caminhos do tipo:
+  `/root/esperancita-recovery-backup-YYYYMMDDTHHMMSSZ`.
+
+### Diagnostico encontrado
+
+- VPS atual: `srv1577551.hstgr.cloud` / `2.24.30.151`.
+- Ubuntu: 24.04.4 LTS.
+- Existe usuario SSH permitido `givrs`; `sshd_config` tem `AllowUsers givrs`.
+- O servidor usa `ssh.socket` no boot.
+- `ufw` e `fail2ban` estao ativos no boot.
+- Logs mostram bloqueio de conexoes pela UFW, incluindo tentativas na porta `2222`.
+- A Hostinger possui opcoes de painel para `Reset firewall` e `Reset SSH`; essas
+  opcoes nao aparecem como endpoint publico na API consultada.
+
+### Pendencia bloqueante
+
+SSH publico ainda nao esta acessivel de forma estavel a partir da maquina local.
+Antes de instalar OpenClaw na VPS, e necessario executar no hPanel da Hostinger:
+
+1. `Reset firewall`.
+2. Se ainda falhar, `Reset SSH`.
+3. Reiniciar a VPS.
+
+Depois disso, testar:
+
+```powershell
+ssh -i $env:USERPROFILE\.ssh\esperancita_hostinger_ed25519 givrs@2.24.30.151 "hostname && whoami"
+```
+
+Se `givrs` falhar, testar `root` somente por chave:
+
+```powershell
+ssh -i $env:USERPROFILE\.ssh\esperancita_hostinger_ed25519 root@2.24.30.151 "hostname && whoami"
+```
 
 ## Plano de deploy
 
