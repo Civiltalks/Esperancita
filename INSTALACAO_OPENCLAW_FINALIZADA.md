@@ -2,8 +2,26 @@
 
 Data/hora: 2026-05-08 15:00 -03:00  
 Atualizacao Telegram/OpenAI/Hostinger: 2026-05-08 16:03 -03:00  
+Atualizacao VPS 24/7: 2026-05-08 20:30 -03:00  
 Raiz dos materiais: `C:\Users\aliss\OneDrive\Desktop\Open Claw`  
 Estado OpenClaw: `C:\Users\aliss\.openclaw`
+
+## Atualizacao VPS 24/7
+
+O ambiente permanente agora roda na VPS Hostinger:
+
+- Host: `srv1577551.hstgr.cloud`
+- IP: `2.24.30.151`
+- Usuario operacional: `givrs`
+- Runtime VPS: `/home/givrs/.openclaw`
+- Servico systemd: `openclaw-esperancita.service`
+- Status validado: ativo, habilitado e funcionando apos reboot
+- Modelo principal: `openai-codex/gpt-5.5` via OAuth OpenAI/Codex
+- Telegram: `@esperancitamy_bot` por variavel de ambiente privada
+
+Documento operacional completo:
+
+`docs/VPS_OPENCLAW_DEPLOY_FINAL.md`
 
 ## 1. Resumo do que foi encontrado
 
@@ -107,8 +125,9 @@ Resultados:
 - Instalar o gateway como Scheduled Task: falhou com `Acceso denegado`.
 - Criar symlink de uma skill de plugin: o Windows retornou `EPERM`; isso nao bloqueou o agente nem o Telegram.
 - Instalar Docker/WSL/GitHub CLI/pip: nao eram necessarios para a base e nao foram instalados.
-- Hospedagem na Hostinger ainda nao foi feita. Apenas o token/API foi configurado e validado.
-- GitHub nao foi configurado.
+- Hospedagem na Hostinger foi concluida em 2026-05-08. Detalhes em
+  `docs/VPS_OPENCLAW_DEPLOY_FINAL.md`.
+- GitHub foi configurado no Windows e clonado na VPS em `/home/givrs/Esperancita`.
 - Gateway persistente em boot ainda nao foi configurado por falta de permissao administrativa na criacao da Scheduled Task.
 - OAuth atual expira/renova por perfil; monitorar com `openclaw models status`. Se pedir novo login, rodar novamente o comando OAuth.
 
@@ -235,8 +254,8 @@ Copy-Item -LiteralPath "C:\Users\aliss\OneDrive\Desktop\Open Claw\_BACKUP_INSTAL
 
 1. Enviar uma nova mensagem normal para `@esperancitamy_bot` e confirmar se o agente responde automaticamente.
 2. Manter conversas da Esperancita no `openai-codex/gpt-5.5`; nao trocar para `openai/gpt-5.5` sem motivo.
-3. Abrir PowerShell como administrador e tentar `openclaw gateway install` para persistencia automatica local.
-4. Escolher qual VPS Hostinger sera usada para hospedar o OpenClaw. A API encontrou 2 VPS `KVM 2`; nao fiz deploy automaticamente.
+3. Manter o gateway local do Windows parado para evitar polling duplicado do Telegram.
+4. Usar a VPS Hostinger como ambiente permanente.
 5. Rodar a jornada do starter kit via skill `onboarding-checklist`.
 6. Criar backup manual depois de qualquer nova configuracao.
 

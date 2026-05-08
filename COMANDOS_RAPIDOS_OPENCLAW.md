@@ -1,5 +1,51 @@
 # Comandos Rapidos OpenClaw
 
+## VPS atual
+
+OpenClaw/Esperancita roda 24/7 na VPS Hostinger:
+
+```powershell
+ssh -i $env:USERPROFILE\.ssh\esperancita_hostinger_ed25519_nova givrs@2.24.30.151
+ssh -i $env:USERPROFILE\.ssh\esperancita_hostinger_ed25519_nova root@2.24.30.151
+```
+
+Status do servico na VPS:
+
+```bash
+systemctl status openclaw-esperancita.service --no-pager
+systemctl is-active openclaw-esperancita.service
+systemctl is-enabled openclaw-esperancita.service
+```
+
+Operacao do servico:
+
+```bash
+sudo systemctl start openclaw-esperancita.service
+sudo systemctl stop openclaw-esperancita.service
+sudo systemctl restart openclaw-esperancita.service
+sudo journalctl -u openclaw-esperancita.service -f
+```
+
+Verificacao OpenClaw na VPS:
+
+```bash
+set -a
+. /home/givrs/.openclaw/openclaw.env
+set +a
+
+openclaw health
+openclaw models status
+openclaw channels status --probe
+openclaw agent --local --agent main -m "Responda exatamente: OK_OPENCLAW" --json --timeout 300
+```
+
+Logs:
+
+```bash
+journalctl -u openclaw-esperancita.service -n 120 --no-pager
+tail -n 120 /tmp/openclaw/openclaw-$(date +%F).log
+```
+
 ## Iniciar
 
 ```powershell
@@ -201,9 +247,17 @@ openclaw gateway status
 
 ## Hospedagem
 
-Para teste local com Telegram em polling, nao precisa de dominio nem hospedagem externa: mantenha o gateway rodando neste Windows. Para 24/7, use VPS/Hostinger/WSL2 ou instale o gateway como Scheduled Task em PowerShell administrador.
+O ambiente permanente agora e a VPS Hostinger `srv1577551.hstgr.cloud`
+(`2.24.30.151`). O Windows deve ser usado apenas como estacao de manutencao,
+backup e bootstrap.
 
-GitHub e Hostinger nao foram configurados neste processo.
+GitHub esta clonado na VPS em:
+
+```bash
+/home/givrs/Esperancita
+```
+
+O gateway local do Windows foi parado para evitar polling duplicado do Telegram.
 
 ## Hostinger API
 
