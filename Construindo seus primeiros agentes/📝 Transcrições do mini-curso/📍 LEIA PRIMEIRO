@@ -1,0 +1,38 @@
+# 📍 Transcrições — Mini-curso OpenClaw V2
+
+Texto completo das aulas do mini-curso (4h28min · ~48.886 palavras).
+
+## Arquivos disponíveis
+
+| Arquivo | Formato | Pra que serve |
+|---------|---------|---------------|
+| `transcricao-mini-curso-openclaw-completo.md` | Markdown · prosa contínua | Joga na sua IA pra ela ler o curso inteiro |
+| `transcricao-mini-curso-openclaw-completo.srt` | SRT com timestamps | Sincroniza com o vídeo · busca por momento exato |
+
+## Como usar com sua IA
+
+1. Baixa o `transcricao-mini-curso-openclaw-completo.md`
+2. Anexa no Claude.ai · ChatGPT · sua IA preferida
+3. Manda este prompt:
+
+> Lê essa transcrição completa do mini-curso OpenClaw da Pixel Educação. Memoriza o conteúdo. Quando eu te perguntar sobre qualquer aula, conceito ou comando que apareceu no curso, me responde com base no que tá aqui — citando o trecho exato quando útil.
+
+Pronto. Sua IA virou tutor sobre o curso inteiro.
+
+## Casos de uso comum
+
+- **"Resume a aula sobre memória do agente"** — sua IA acha o trecho e resume
+- **"Em qual minuto o Bruno fala sobre crons?"** — busca por palavra-chave + timestamp do SRT
+- **"Cita exemplos do Bruno sobre Telegram"** — extrai todas as menções
+- **"Compara o que ele disse sobre VPS vs Managed"** — sua IA compara seções
+
+## Sobre a transcrição
+
+- Gerada automaticamente a partir do áudio
+- Sem timestamps no MD (versão limpa pra leitura/IA)
+- Com timestamps no SRT (versão sincronizada com vídeo)
+- Pode ter pequenos erros de transcrição em palavras técnicas
+
+---
+
+**Suporte:** [Comunidade WhatsApp Pixel AI Hub](https://chat.whatsapp.com/BRN2zv1usfL11u07HVdsL2)

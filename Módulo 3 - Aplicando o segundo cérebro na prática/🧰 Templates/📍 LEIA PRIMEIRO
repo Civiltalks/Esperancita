@@ -1,0 +1,51 @@
+# 📍 Templates dos 3 cérebros
+
+> Os 3 zips que materializam os 3 níveis de cérebro corporativo. **Peça central da imersão.**
+
+---
+
+## Os 3 templates
+
+| Subpasta | Zip | Pra quê |
+|----------|-----|---------|
+| **`template-pessoal/`** | `template-pessoal-0.1.0.zip` | Cérebro individual do empreendedor · daily notes · ideias · pendências |
+| **`template-diretoria/`** | `template-diretoria-0.1.0.zip` | Cérebro confidencial dos sócios · contratos · salários · negociações |
+| **`template-empresa/`** | `template-empresa-0.1.0.zip` | Cérebro coletivo da empresa · operação · marketing · vendas |
+
+Cada subpasta tem o zip + `COMO-USAR.md` com prompt pronto pra colar na sua IA.
+
+---
+
+## Como usar (3 passos)
+
+1. **Decide qual cérebro montar primeiro** — recomendo `pessoal` (1 semana) → `empresa` (semana 2) → `diretoria` (semana 3-4)
+2. **Baixa o zip da subpasta correspondente**
+3. **Anexa no Claude.ai · ChatGPT · OpenClaw** com prompt do `COMO-USAR.md` da subpasta
+
+---
+
+## Por que 3 zips e não 1 só?
+
+**Privacidade.** Cada cérebro tem audiência diferente:
+
+- Pessoal: só você
+- Diretoria: só sócios
+- Empresa: time inteiro
+
+Misturar tudo num cérebro só = vazamento garantido.
+
+---
+
+## Status atual
+
+⏳ Os 3 zips estão na pasta legada **`Curso Imersão Segundo Cérebro (2026) → Aula prática + Templates (.zip)/`** no Drive `bruno@microsaas`. Bruno precisa **arrastar manualmente** cada zip pra sua subpasta correspondente aqui.
+
+| Zip a copiar | Origem | Destino |
+|--------------|--------|---------|
+| `template-pessoal-0.1.0.zip` | `Curso Imersão Segundo Cérebro (2026)/Aula prática + Templates (.zip)/` | `template-pessoal/` |
+| `template-diretoria-0.1.0.zip` | (mesmo) | `template-diretoria/` |
+| `template-empresa-0.1.0.zip` | (mesmo) | `template-empresa/` |
+
+---
+
+📌 Atualizado em 04/05/2026 · Pixel Educação

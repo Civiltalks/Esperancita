@@ -1,0 +1,69 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+*.secret
+*.secrets
+*.key
+*.pem
+*.p12
+*.pfx
+*.token
+*.tokens
+.token
+.tokens
+github-token*
+github_pat*
+GITHUB_TOKEN*
+credentials/
+secrets/
+private/
+
+# OpenClaw private runtime state
+**/.openclaw/
+**/.openclaw/**
+**/openclaw.json
+**/openclaw.json.bak
+**/gateway.cmd
+**/auth-profiles.json
+**/auth-state.json
+**/sessions/
+**/sessions/**
+**/*.jsonl
+**/*.trajectory.jsonl
+**/logs/
+**/logs/**
+*.log
+
+# Local installation backups
+_BACKUP_INSTALACAO_OPENCLAW/
+_BACKUP_INSTALACAO_OPENCLAW/**
+
+# OS/editor/cache
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# Node/Python/build artifacts
+node_modules/
+dist/
+build/
+.next/
+.vite/
+.cache/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Archive/export artifacts generated during maintenance
+*.tar
+*.tar.gz
+*.7z
+*.rar

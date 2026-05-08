@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aulão Bônus — Como ligar o cérebro do seu agente</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080b13;
+      --panel: #101725;
+      --panel-2: #151f33;
+      --panel-3: #1d2a44;
+      --text: #f4f7fb;
+      --muted: #a7b2c7;
+      --soft: #d8deea;
+      --line: rgba(255,255,255,.11);
+      --orange: #ff6a00;
+      --orange-soft: rgba(255,106,0,.14);
+      --blue: #4aa8ff;
+      --blue-soft: rgba(74,168,255,.13);
+      --green: #35d07f;
+      --green-soft: rgba(53,208,127,.13);
+      --purple: #b28cff;
+      --purple-soft: rgba(178,140,255,.13);
+      --red: #ff5f6d;
+      --red-soft: rgba(255,95,109,.13);
+      --yellow: #ffd166;
+      --yellow-soft: rgba(255,209,102,.13);
+      --radius: 24px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(255,106,0,.18), transparent 36%),
+        radial-gradient(circle at 92% 14%, rgba(74,168,255,.16), transparent 34%),
+        linear-gradient(180deg, #080b13 0%, #0d1220 52%, #070910 100%);
+      color: var(--text);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      line-height: 1.58;
+    }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 40px 22px 96px; }
+    .hero {
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 52px;
+      background: linear-gradient(135deg, rgba(21,31,51,.94), rgba(16,23,37,.72));
+      box-shadow: 0 32px 90px rgba(0,0,0,.38);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero:after {
+      content: "";
+      position: absolute;
+      width: 420px; height: 420px;
+      right: -170px; top: -170px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,106,0,.28), transparent 66%);
+      filter: blur(3px);
+    }
+    .kicker {
+      display: inline-flex; gap: 10px; align-items: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,106,0,.32);
+      background: var(--orange-soft);
+      color: #ffb17a;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      position: relative;
+      z-index: 1;
+    }
+    h1 {
+      font-size: clamp(38px, 7vw, 78px);
+      line-height: .95;
+      letter-spacing: -.055em;
+      margin: 26px 0 18px;
+      max-width: 920px;
+      position: relative;
+      z-index: 1;
+    }
+    h1 span { color: var(--orange); }
+    .lead {
+      color: var(--soft);
+      font-size: 22px;
+      max-width: 830px;
+      margin: 0 0 30px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .meta {
+      border: 1px solid var(--line);
+      background: rgba(8,11,19,.48);
+      border-radius: 16px;
+      padding: 14px;
+      min-height: 84px;
+    }
+    .meta b { display: block; color: #fff; font-size: 14px; }
+    .meta span { color: var(--muted); font-size: 13px; }
+    .section { margin-top: 54px; }
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--orange);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.02;
+      letter-spacing: -.035em;
+      margin: 0;
+    }
+    .subtitle { color: var(--muted); max-width: 560px; margin: 0; }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(21,31,51,.86), rgba(16,23,37,.72));
+      padding: 26px;
+      box-shadow: 0 16px 40px rgba(0,0,0,.2);
+    }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+    .brain-card { position: relative; overflow: hidden; min-height: 280px; }
+    .brain-card:before {
+      content: attr(data-step);
+      position: absolute; right: 18px; top: 8px;
+      font-size: 92px; line-height: 1;
+      font-weight: 900;
+      color: rgba(255,255,255,.045);
+      letter-spacing: -.08em;
+    }
+    .tag {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      margin-bottom: 16px;
+    }
+    .tag.orange { color: #ffb17a; background: var(--orange-soft); border-color: rgba(255,106,0,.32); }
+    .tag.blue { color: #a8d6ff; background: var(--blue-soft); border-color: rgba(74,168,255,.28); }
+    .tag.purple { color: #d8c8ff; background: var(--purple-soft); border-color: rgba(178,140,255,.28); }
+    .tag.green { color: #a9f0ca; background: var(--green-soft); border-color: rgba(53,208,127,.28); }
+    .tag.red { color: #ffb3ba; background: var(--red-soft); border-color: rgba(255,95,109,.28); }
+    h3 { font-size: 24px; line-height: 1.08; margin: 0 0 12px; letter-spacing: -.02em; }
+    h4 { font-size: 16px; margin: 22px 0 8px; }
+    p { color: var(--muted); margin: 0 0 12px; }
+    ul, ol { margin: 12px 0 0; padding-left: 20px; color: var(--muted); }
+    li { margin: 7px 0; }
+    strong { color: #fff; }
+    code {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .92em;
+      color: #ffd5ba;
+      background: rgba(255,106,0,.12);
+      border: 1px solid rgba(255,106,0,.18);
+      padding: 2px 6px;
+      border-radius: 7px;
+    }
+    pre {
+      margin: 16px 0 0;
+      padding: 18px;
+      overflow: auto;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: #060914;
+      color: #dce7ff;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .path-card {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 20px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.035);
+      margin-bottom: 14px;
+    }
+    .path-role {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    .timeline { counter-reset: step; display: grid; gap: 14px; }
+    .timeline-item {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.035);
+    }
+    .timeline-item:before {
+      content: counter(step);
+      width: 44px; height: 44px;
+      display: grid; place-items: center;
+      border-radius: 14px;
+      background: var(--orange-soft);
+      color: #ffb17a;
+      font-weight: 900;
+      font-family: 'IBM Plex Mono', monospace;
+      border: 1px solid rgba(255,106,0,.28);
+    }
+    .callout {
+      border-radius: 24px;
+      padding: 26px;
+      border: 1px solid rgba(255,106,0,.24);
+      background: linear-gradient(135deg, rgba(255,106,0,.16), rgba(255,255,255,.035));
+      margin: 18px 0;
+    }
+    .quote {
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.12;
+      letter-spacing: -.03em;
+      color: #fff;
+      margin: 0;
+    }
+    .matrix { display: grid; gap: 12px; }
+    .row {
+      display: grid;
+      grid-template-columns: 190px 1fr 170px;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.035);
+      align-items: center;
+    }
+    .status {
+      display: inline-flex;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 800;
+      border: 1px solid var(--line);
+    }
+    .status.partial { color: #ffe19a; background: var(--yellow-soft); border-color: rgba(255,209,102,.28); }
+    .status.blocked { color: #ffb3ba; background: var(--red-soft); border-color: rgba(255,95,109,.28); }
+    .status.safe { color: #a9f0ca; background: var(--green-soft); border-color: rgba(53,208,127,.28); }
+    .minute {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 8px;
+    }
+    .script-line {
+      border-left: 3px solid var(--orange);
+      padding: 14px 18px;
+      background: rgba(255,106,0,.08);
+      border-radius: 0 18px 18px 0;
+      color: var(--soft);
+      margin: 16px 0;
+      font-size: 18px;
+    }
+    .footer {
+      margin-top: 72px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+    }
+    @media (max-width: 860px) {
+      .hero { padding: 34px 24px; }
+      .hero-grid, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .section-title { display: block; }
+      .row { grid-template-columns: 1fr; }
+      .path-card { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="kicker">Aulão bônus · Pixel AI Hub</div>
+      <h1>Como ligar o cérebro do <span>seu agente</span></h1>
+      <p class="lead">Uma aula modular para ativar memória operacional em três níveis: primeiro o cérebro pessoal, depois a diretoria, depois a equipe. Cada pessoa faz o bloco que corresponde ao seu papel.</p>
+      <div class="hero-grid">
+        <div class="meta"><b>Duração sugerida</b><span>75–90 min, com blocos puláveis</span></div>
+        <div class="meta"><b>Promessa principal</b><span>Sair com o primeiro cérebro funcionando</span></div>
+        <div class="meta"><b>Demo ao vivo</b><span>Foco no pessoal; outros como upgrade</span></div>
+        <div class="meta"><b>Estado dos repos</b><span>Parcialmente auto-instaláveis</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">Tese da aula</div>
+          <h2>Não é uma aula sobre Git. É uma aula sobre memória.</h2>
+        </div>
+        <p class="subtitle">A arquitetura completa tem três cérebros, mas a adoção começa pelo ponto de menor atrito: a pessoa sentir que o agente dela ficou mais inteligente.</p>
+      </div>
+      <div class="callout">
+        <p class="quote">“Hoje você vai ligar o primeiro cérebro do seu agente. Depois, se fizer sentido para o seu papel, você evolui para diretoria e equipe.”</p>
+      </div>
+      <div class="grid-3">
+        <div class="card brain-card" data-step="1">
+          <span class="tag orange">Bloco obrigatório</span>
+          <h3>Cérebro pessoal</h3>
+          <p><strong>Para todos.</strong> Fundador, diretor, gestor, funcionário ou freelancer.</p>
+          <p>Promessa emocional: <strong>“meu agente lembra de mim.”</strong></p>
+          <ul>
+            <li>Contexto individual</li>
+            <li>Preferências e rotinas</li>
+            <li>Projetos pessoais</li>
+            <li>Primeira vitória rápida</li>
+          </ul>
+        </div>
+        <div class="card brain-card" data-step="2">
+          <span class="tag purple">Bloco liderança</span>
+          <h3>Cérebro da diretoria</h3>
+          <p><strong>Só para founder, sócio, diretoria e liderança.</strong> Funcionário pode pular.</p>
+          <p>Promessa estratégica: <strong>“decisão sensível não fica perdida no WhatsApp.”</strong></p>
+          <ul>
+            <li>Dinheiro com nome</li>
+            <li>Pessoas e conflitos</li>
+            <li>Contratos e jurídico</li>
+            <li>Planejamento de alto nível</li>
+          </ul>
+        </div>
+        <div class="card brain-card" data-step="3">
+          <span class="tag blue">Bloco operação</span>
+          <h3>Cérebro da equipe</h3>
+          <p><strong>Para founder, gestor, ops e colaboradores.</strong> Alguns criam; outros só contribuem.</p>
+          <p>Promessa operacional: <strong>“o time inteiro trabalha com a mesma memória.”</strong></p>
+          <ul>
+            <li>Inbox por pessoa</li>
+            <li>Áreas da empresa</li>
+            <li>Consolidação</li>
+            <li>Agentes com contexto real</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">Roteamento por perfil</div>
+          <h2>Cada aluno segue um caminho diferente</h2>
+        </div>
+        <p class="subtitle">Isso evita que um funcionário precise assistir diretoria e evita que um founder saia sem entender a arquitetura completa.</p>
+      </div>
+      <div class="card">
+        <div class="path-card">
+          <div class="path-role">Funcionário</div>
+          <div><strong>Faz:</strong> cérebro pessoal. <strong>Pula:</strong> diretoria. <strong>Assiste:</strong> equipe para entender como contribuir no inbox da empresa.</div>
+        </div>
+        <div class="path-card">
+          <div class="path-role">Gestor</div>
+          <div><strong>Faz:</strong> pessoal + equipe. <strong>Diretoria:</strong> só assiste se tiver acesso a decisões sensíveis.</div>
+        </div>
+        <div class="path-card">
+          <div class="path-role">Founder</div>
+          <div><strong>Faz tudo:</strong> pessoal → diretoria → equipe. É quem entende governança, privacidade e rollout.</div>
+        </div>
+        <div class="path-card">
+          <div class="path-role">Sócio/diretor</div>
+          <div><strong>Faz:</strong> pessoal + diretoria. <strong>Equipe:</strong> faz se também for responsável por operação.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">Roteiro da aula</div>
+          <h2>75–90 minutos, com blocos independentes</h2>
+        </div>
+        <p class="subtitle">O ideal é gravar como uma aula única, mas com marcações claras para a pessoa pular blocos sem se perder.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div>
+            <h3>Mapa mental dos três cérebros</h3>
+            <p>Explicar por que existe pessoal, diretoria e equipe. Mostrar que não é complexidade gratuita: é controle de contexto e permissão.</p>
+            <div class="script-line">“O erro é tentar fazer um cérebro único para tudo. A empresa tem camadas de memória, assim como tem camadas de acesso.”</div>
+            <div class="minute">0–12 min</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div>
+            <h3>Bloco 1 — ligar o cérebro pessoal</h3>
+            <p>Demo principal. É o único bloco que precisa ser realmente mão na massa para todo mundo.</p>
+            <ol>
+              <li>Criar repo a partir do template pessoal.</li>
+              <li>Rodar inicialização.</li>
+              <li>Abrir no Claude/Cowork/OpenClaw.</li>
+              <li>Rodar <code>/cerebro</code>.</li>
+              <li>Salvar a primeira memória.</li>
+              <li>Testar recall: “o que você sabe sobre mim agora?”</li>
+            </ol>
+            <div class="script-line">“O primeiro uau não é a empresa organizada. É o seu agente responder como alguém que já te conhece.”</div>
+            <div class="minute">12–40 min</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div>
+            <h3>Bloco 2 — cérebro da diretoria</h3>
+            <p>Bloco condicional. Ensinar conceito, regra dos 3 gatilhos e fluxo ideal. Só fazer demo se o repo estiver corrigido.</p>
+            <ol>
+              <li>Quando criar: mais de uma pessoa tomando decisão sensível.</li>
+              <li>O que entra: dinheiro nominal, pessoas, contrato/jurídico.</li>
+              <li>O que não entra: operação normal da equipe.</li>
+              <li>Como distribuir: humano decide, não automação cega.</li>
+            </ol>
+            <div class="script-line">“Diretoria é default privado. Se você tiver dúvida se algo é sensível, ele começa aqui — não no cérebro do time.”</div>
+            <div class="minute">40–58 min</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div>
+            <h3>Bloco 3 — cérebro da equipe</h3>
+            <p>Mostrar como a memória deixa de ser individual e vira operação. Aqui entram inbox, áreas, staging e consolidação.</p>
+            <ol>
+              <li>Cada pessoa captura no próprio fluxo.</li>
+              <li>O que é público vai para o inbox da equipe.</li>
+              <li>O agente consolida em áreas canônicas.</li>
+              <li>O time passa a operar com contexto compartilhado.</li>
+            </ol>
+            <div class="script-line">“O cérebro da equipe não nasce perfeito. Ele nasce com inbox. A maturidade vem da consolidação.”</div>
+            <div class="minute">58–76 min</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div>
+            <h3>Fechamento — como isso vira rotina</h3>
+            <p>Conectar com OpenClaw, agentes 24/7, revisão semanal e governança. Não prometer autonomia total no dia 1.</p>
+            <div class="script-line">“Hoje você ligou a memória. A partir daqui, a pergunta deixa de ser ‘qual prompt eu uso?’ e vira ‘qual contexto o agente precisa para operar?’”</div>
+            <div class="minute">76–90 min</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">Comandos de demonstração</div>
+          <h2>O caminho feliz que deveria funcionar</h2>
+        </div>
+        <p class="subtitle">Use comandos reais só depois dos P0 corrigidos. Hoje os scripts rodam, mas ainda sobram placeholders e docs quebradas.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <span class="tag orange">Pessoal</span>
+          <h3>Demo principal</h3>
+          <p>Status atual: parcialmente auto-instalável. Bom candidato para o primeiro “uau”, mas precisa reposicionar texto de “sócio-diretor” para “pessoal para todos”.</p>
+          <pre>bash empresa/skills/inicializar-cerebro/scripts/inicializar.sh \
+  --empresa "Acme Corp" \
+  --empresa-slug "acme" \
+  --fundador "Ana Silva" \
+  --fundador-slug "ana-s" \
+  --fundador-email "ana@acme.com" \
+  --timezone "America/Sao_Paulo" \
+  --idioma "pt-BR" \
+  --agente-nome "Amora" \
+  --agente-slug "amora"</pre>
+        </div>
+        <div class="card">
+          <span class="tag purple">Diretoria</span>
+          <h3>Demo condicional</h3>
+          <p>Status atual: perigoso para demo sensível. Antes de usar ao vivo, precisa corrigir privacidade e remover/criar skill prometida.</p>
+          <pre>git checkout -b staging
+
+bash empresa/skills/inicializar-cerebro/scripts/inicializar.sh \
+  --empresa "Acme Corp" \
+  --empresa-slug "acme" \
+  --org "acme-org" \
+  --agente-nome "Atena" \
+  --agente-slug "atena" \
+  --fundador "Ana Silva"</pre>
+        </div>
+        <div class="card">
+          <span class="tag blue">Equipe</span>
+          <h3>Demo após pessoal</h3>
+          <p>Status atual: parcialmente auto-instalável. Funciona melhor como segundo momento, quando o aluno já entendeu valor individual.</p>
+          <pre>git checkout -b staging
+
+bash empresa/skills/inicializar-cerebro/scripts/inicializar.sh \
+  --empresa "Acme Corp" \
+  --empresa-slug "acme" \
+  --org "acme-org" \
+  --agente-nome "Oliver" \
+  --agente-slug "oliver" \
+  --fundador "Ana Silva"</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">Prontidão dos templates</div>
+          <h2>O que precisa ser corrigido antes de gravar</h2>
+        </div>
+        <p class="subtitle">Essa tabela é para produção interna. Pode virar checklist do Vitor/time antes da aula.</p>
+      </div>
+      <div class="card">
+        <div class="matrix">
+          <div class="row">
+            <strong>Template pessoal</strong>
+            <span>Init roda, mas sobram placeholders como <code>{{AGENTE_PESSOAL_NOME}}</code>, <code>{{ORG}}</code>, <code>{{SUA_CONTA}}</code>. README promete skill inexistente <code>setup-estacao-pessoal</code>. Narrativa ainda está mais “sócio-diretor” do que “pessoal para todos”.</span>
+            <span class="status partial">Parcial</span>
+          </div>
+          <div class="row">
+            <strong>Template diretoria</strong>
+            <span>Init roda, mas há P0: <code>setup-openclaw-pessoal-diretor</code> não existe e a privacidade está contraditória. O repo diz default privado, mas templates de inbox falam público por default.</span>
+            <span class="status blocked">Bloqueia demo</span>
+          </div>
+          <div class="row">
+            <strong>Template equipe</strong>
+            <span>Init roda, mas sobram placeholders operacionais e docs pós-init apontam para pastas já renomeadas. Serve como visão/upgrade; para demo precisa limpeza.</span>
+            <span class="status partial">Parcial</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid-2" style="margin-top:16px">
+        <div class="card">
+          <span class="tag red">P0 técnico</span>
+          <h3>Correções obrigatórias</h3>
+          <ol>
+            <li>Criar ou remover <code>setup-openclaw-pessoal-diretor</code>.</li>
+            <li>Corrigir privacidade da diretoria para default privado em todos os arquivos.</li>
+            <li>Fazer init falhar ou avisar claramente se sobrar placeholder operacional.</li>
+            <li>Atualizar docs pós-init para paths renomeados.</li>
+          </ol>
+        </div>
+        <div class="card">
+          <span class="tag green">P0 pedagógico</span>
+          <h3>Correções de narrativa</h3>
+          <ol>
+            <li>Reposicionar pessoal como “para todos”, não só diretor.</li>
+            <li>Marcar diretoria como bloco pulável para funcionário.</li>
+            <li>Separar “faça agora” de “próximo nível”.</li>
+            <li>Prometer instalação progressiva, não arquitetura final no primeiro dia.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">Material final da aula</div>
+          <h2>Estrutura de slides/página</h2>
+        </div>
+        <p class="subtitle">Se isso virar um HTML público para alunos, remover a tabela de prontidão interna e manter só os blocos didáticos.</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Versão aluno</h3>
+          <ul>
+            <li>Promessa da aula</li>
+            <li>Mapa dos 3 cérebros</li>
+            <li>Roteamento por perfil</li>
+            <li>Passo a passo do cérebro pessoal</li>
+            <li>Quando usar diretoria</li>
+            <li>Como contribuir para equipe</li>
+            <li>Próximos passos</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Versão bastidor</h3>
+          <ul>
+            <li>Checklist de auto-instalação</li>
+            <li>Comandos reais testados</li>
+            <li>P0 por template</li>
+            <li>O que pode ser demo ao vivo</li>
+            <li>O que deve ser só explicado</li>
+            <li>Fallback caso o init quebre</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout">
+        <p class="quote">Recomendação final: gravar a aula com o <strong>pessoal como demo principal</strong>, diretoria como <strong>bloco de liderança</strong> e equipe como <strong>bloco de operação</strong>. Só transformar diretoria/equipe em live demo depois dos P0 corrigidos.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p><strong>Arquivo:</strong> aulao-bonus-modular-cerebros-2026-04-26.html</p>
+      <p><strong>Uso recomendado:</strong> roteiro visual interno para reescrever o aulão bônus e guiar QA dos templates antes da gravação.</p>
+    </footer>
+  </main>
+</body>
+</html>

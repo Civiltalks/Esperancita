@@ -1,0 +1,34 @@
+# 📍 Módulo 2 — Conectando agentes ao cérebro
+
+DIA 2 inicial da imersão. ~2h · 4 blocos · cobre permissionamento, multi-agente, deep-dive marketing.
+
+---
+
+## Estrutura
+
+| Pasta | O que tem |
+|-------|-----------|
+| 📊 **Slides/** | HTMLs dos slides do início do DIA 2 |
+| 📚 **Materiais/** | Documentos de apoio em MD |
+| 📝 **Transcrição/** | Texto do DIA 2 (parte inicial) |
+
+---
+
+## Blocos cobertos
+
+| Hora | Bloco | Conteúdo |
+|------|-------|----------|
+| 9:00 | Abertura DIA 2 | Recap DIA 1 + roteiro DIA 2 + reativar engajamento |
+| 9:17 | Bloco 7 | **Conceito 1→sistema de agentes** · criar SOUL.md do agente de suporte · demo lado a lado dois agentes · quando usar multi-agente |
+| 9:49 | Bloco 8 | **Duas camadas de controle** (escopo + whitelist) · cenário A (grupos) vs B (tópicos) · demo acesso negado + autorizado |
+| 10:11 | Bloco 9 | **Deep-dive marketing** · ciclo hipótese→criativo→teste→dado · estrutura `cerebro/areas/marketing/` · 3 skills · daily report ao vivo |
+
+---
+
+## Aha-moment desse módulo
+
+Aluno percebe que **agente único não escala** — mas multi-agente **com escopo claro** + **permissionamento robusto** dá controle. Você tem 5 agentes operando empresas distintas sem vazar contexto.
+
+---
+
+📌 Atualizado em 04/05/2026 · Pixel Educação

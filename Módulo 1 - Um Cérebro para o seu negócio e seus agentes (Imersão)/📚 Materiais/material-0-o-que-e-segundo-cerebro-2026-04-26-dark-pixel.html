@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Material 0 — Sua empresa esquece | Pixel AI Hub · Dark Test</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #F2F1ED;
+      --blue: #101C7E;
+      --blue2: #1827A3;
+      --blue3: #606FEF;
+      --orange: #FE5000;
+      --orange2: #FF7A3D;
+      --orangeLight: #FFA38D;
+      --lilac: #D8B3FD;
+      --lilac2: #C986F6;
+      --lilacDark: #9E6AE8;
+      --night: #050821;
+      --night2: #080D32;
+      --night3: #10184F;
+      --ink: #F7F3EA;
+      --muted: rgba(247, 243, 234, .68);
+      --line: rgba(242,241,237,.13);
+      --white: #fffdf8;
+      --radius: 28px;
+      --f: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --mono: 'IBM Plex Mono', monospace;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--f);
+      color: var(--ink);
+      line-height: 1.56;
+      background:
+        radial-gradient(circle at 8% 2%, rgba(254,80,0,.36), transparent 30%),
+        radial-gradient(circle at 92% 8%, rgba(216,179,253,.28), transparent 34%),
+        radial-gradient(circle at 54% 92%, rgba(96,111,239,.25), transparent 42%),
+        linear-gradient(180deg, #04061B 0%, #091039 48%, #050821 100%);
+    }
+    body:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .24;
+      background-image: radial-gradient(circle, rgba(242,241,237,.22) 1px, transparent 1.5px);
+      background-size: 30px 30px;
+      mask-image: radial-gradient(circle at 44% 6%, black, transparent 74%);
+    }
+    body:after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(135deg, rgba(242,241,237,.06), transparent 22%, transparent 78%, rgba(254,80,0,.08));
+      mix-blend-mode: screen;
+    }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 30px 20px 96px; position: relative; }
+    .brandbar { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 18px 0 26px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 900; letter-spacing: -.03em; color: var(--cream); font-size: 20px; }
+    .mark { width: 38px; height: 38px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; padding: 5px; border-radius: 12px; background: var(--cream); box-shadow: 0 14px 34px rgba(254,80,0,.25); }
+    .mark i { display: block; border-radius: 4px; background: var(--orange); }
+    .mark i:nth-child(2) { background: var(--lilac); }
+    .mark i:nth-child(3) { background: var(--blue3); }
+    .mark i:nth-child(4) { background: var(--blue); }
+    .course-badge { display: inline-flex; align-items: center; gap: 9px; padding: 10px 14px; border-radius: 999px; background: rgba(242,241,237,.08); border: 1px solid var(--line); color: rgba(247,243,234,.74); font: 800 12px var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+    .hero { position: relative; overflow: hidden; min-height: 650px; border-radius: 40px; padding: 60px; background: radial-gradient(circle at 84% 14%, rgba(254,80,0,.30), transparent 32%), radial-gradient(circle at 16% 88%, rgba(216,179,253,.24), transparent 34%), linear-gradient(135deg, rgba(16,28,126,.92) 0%, rgba(8,13,50,.96) 52%, rgba(5,8,33,.96) 100%); border: 1px solid rgba(242,241,237,.16); box-shadow: 0 34px 90px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.08); }
+    .hero:after { content: "PIXEL AI HUB"; position: absolute; right: -28px; bottom: 16px; color: rgba(242,241,237,.055); font-size: clamp(58px, 10vw, 132px); font-weight: 900; letter-spacing: -.08em; line-height: .82; transform: rotate(-4deg); }
+    .hero > * { position: relative; z-index: 1; }
+    .kicker { display: inline-flex; align-items: center; gap: 10px; padding: 9px 14px; border-radius: 999px; color: var(--orangeLight); background: rgba(254,80,0,.15); border: 1px solid rgba(254,80,0,.34); font: 800 12px var(--mono); letter-spacing: .09em; text-transform: uppercase; }
+    h1 { max-width: 920px; margin: 28px 0 22px; font-size: clamp(48px, 8.7vw, 104px); line-height: .88; letter-spacing: -.078em; font-weight: 300; color: var(--cream); }
+    h1 strong { font-weight: 900; color: var(--cream); }
+    h1 span { color: var(--orange); font-weight: 900; }
+    .lead { max-width: 820px; margin: 0 0 30px; color: rgba(247,243,234,.78); font-size: clamp(20px, 2.4vw, 27px); font-weight: 500; }
+    .punch { display: inline-block; max-width: 880px; padding: 22px 26px; border-radius: 24px; background: var(--cream); color: var(--blue); font-size: clamp(24px, 3vw, 38px); line-height: 1.1; letter-spacing: -.045em; box-shadow: 0 22px 60px rgba(0,0,0,.25); }
+    .punch em { color: var(--orange); font-style: normal; }
+    .hero-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 34px; }
+    .mini { min-height: 106px; padding: 16px; border-radius: 20px; background: rgba(242,241,237,.08); border: 1px solid var(--line); backdrop-filter: blur(12px); }
+    .mini b { display: block; color: var(--cream); margin-bottom: 6px; }
+    .mini span { color: var(--muted); font-size: 14px; }
+    .section { margin-top: 68px; }
+    .section-head { display: flex; justify-content: space-between; gap: 28px; align-items: end; margin-bottom: 22px; }
+    .eyebrow { margin-bottom: 8px; color: var(--orange); font: 800 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    h2 { margin: 0; font-size: clamp(32px, 4.8vw, 58px); line-height: .96; letter-spacing: -.058em; font-weight: 300; color: var(--cream); }
+    h2 strong { font-weight: 900; color: var(--cream); }
+    h3 { margin: 0 0 12px; font-size: 27px; line-height: 1.05; letter-spacing: -.04em; color: var(--cream); }
+    h4 { margin: 20px 0 8px; color: var(--cream); }
+    p { color: var(--muted); margin: 0 0 12px; }
+    strong { color: var(--cream); }
+    .sub { max-width: 610px; color: var(--muted); margin: 0; }
+    ul { margin: 10px 0 0; padding-left: 20px; color: var(--muted); }
+    li { margin: 7px 0; }
+    .card { border-radius: var(--radius); background: linear-gradient(180deg, rgba(242,241,237,.105), rgba(242,241,237,.065)); border: 1px solid var(--line); box-shadow: 0 18px 54px rgba(0,0,0,.22); padding: 28px; backdrop-filter: blur(14px); }
+    .blue-card { background: linear-gradient(135deg, rgba(16,28,126,.96), rgba(24,39,163,.72)); color: var(--white); border-color: rgba(96,111,239,.36); }
+    .blue-card h3, .blue-card h4, .blue-card strong { color: var(--white); }
+    .blue-card p { color: rgba(255,255,255,.76); }
+    .lilac-card { background: linear-gradient(135deg, rgba(216,179,253,.24), rgba(242,241,237,.06)); }
+    .orange-card { background: linear-gradient(135deg, rgba(254,80,0,.24), rgba(242,241,237,.07)); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px; }
+    .tag { display: inline-flex; padding: 7px 11px; border-radius: 999px; font-size: 12px; font-weight: 900; margin-bottom: 18px; border: 1px solid transparent; }
+    .tag.orange { color: var(--orangeLight); background: rgba(254,80,0,.15); border-color: rgba(254,80,0,.30); }
+    .tag.blue { color: #AEB8FF; background: rgba(96,111,239,.16); border-color: rgba(96,111,239,.25); }
+    .tag.lilac { color: #EBD9FF; background: rgba(216,179,253,.18); border-color: rgba(216,179,253,.26); }
+    .tag.white { color: var(--cream); background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.20); }
+    .story { display: grid; grid-template-columns: .82fr 1.18fr; gap: 18px; align-items: stretch; }
+    .persona { position: relative; overflow: hidden; min-height: 420px; }
+    .persona:after { content: "JOÃO"; position: absolute; right: -14px; bottom: 0; color: rgba(242,241,237,.06); font-size: 94px; font-weight: 900; letter-spacing: -.08em; }
+    .avatar { width: 88px; height: 88px; display: grid; place-items: center; margin-bottom: 22px; border-radius: 24px; background: var(--orange); color: var(--white); font-size: 42px; font-weight: 900; box-shadow: 0 20px 44px rgba(254,80,0,.32); }
+    .chaos-list { display: grid; gap: 10px; }
+    .chaos { padding: 15px; border-radius: 16px; background: rgba(242,241,237,.075); border: 1px solid var(--line); }
+    .chaos b { display: block; color: var(--cream); }
+    .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .flow-step { position: relative; min-height: 188px; padding: 19px; border-radius: 22px; background: rgba(242,241,237,.08); border: 1px solid var(--line); box-shadow: 0 18px 42px rgba(0,0,0,.18); }
+    .flow-step:not(:last-child):after { content: "→"; position: absolute; right: -17px; top: 50%; transform: translateY(-50%); color: var(--orange); font-size: 27px; font-weight: 900; z-index: 2; }
+    .n { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 11px; background: var(--orange); color: var(--white); font: 900 13px var(--mono); margin-bottom: 14px; }
+    .big-quote { padding: 34px; border-radius: var(--radius); background: linear-gradient(135deg, var(--cream), #EEE6D8); color: var(--blue); font-size: clamp(26px, 3.3vw, 42px); line-height: 1.08; letter-spacing: -.045em; box-shadow: 0 26px 70px rgba(0,0,0,.24); }
+    .big-quote span { color: var(--orange); }
+    .pillars .card { min-height: 330px; position: relative; overflow: hidden; }
+    .pillars .card:after { content: attr(data-n); position: absolute; right: 18px; bottom: -24px; color: rgba(242,241,237,.055); font-size: 136px; font-weight: 900; letter-spacing: -.1em; line-height: 1; }
+    .rule { display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: center; padding: 18px; border: 1px solid var(--line); border-radius: 22px; background: rgba(242,241,237,.075); margin-bottom: 12px; }
+    .rule .if { font-size: 22px; font-weight: 900; color: var(--cream); letter-spacing: -.03em; }
+    .rule .then { justify-self: end; padding: 10px 14px; border-radius: 999px; font-weight: 900; }
+    .then.personal { color: var(--orangeLight); background: rgba(254,80,0,.16); }
+    .then.board { color: #EBD9FF; background: rgba(216,179,253,.18); }
+    .then.team { color: var(--blue); background: var(--cream); }
+    .connector { color: var(--orange); font-weight: 900; }
+    .brain { min-height: 360px; position: relative; overflow: hidden; }
+    .brain:after { content: attr(data-step); position: absolute; top: -22px; right: 18px; color: rgba(242,241,237,.06); font-size: 126px; font-weight: 900; letter-spacing: -.08em; line-height: 1; }
+    .artifact { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+    .file { min-height: 130px; padding: 16px; border-radius: 18px; background: rgba(242,241,237,.075); border: 1px solid var(--line); }
+    .file b { display: block; color: var(--cream); margin-bottom: 7px; font: 800 13px var(--mono); }
+    .next { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px; }
+    .next .card { min-height: 225px; }
+
+    .permission-map { position: relative; display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 18px; align-items: center; margin-bottom: 18px; }
+    .perm-col { display: grid; gap: 12px; }
+    .perm-person, .perm-agent, .perm-brain, .perm-note { border-radius: 22px; border: 1px solid var(--line); background: rgba(242,241,237,.075); padding: 16px; box-shadow: 0 14px 38px rgba(0,0,0,.16); }
+    .perm-person { color: var(--muted); font-weight: 900; text-align: center; }
+    .perm-agent { color: var(--cream); font-weight: 700; text-align: center; }
+    .perm-agent strong { color: var(--orangeLight); }
+    .perm-agent.team strong { color: #AEB8FF; }
+    .perm-agent span { display: block; margin-top: 4px; color: var(--muted); font: 800 10px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+    .perm-center { display: grid; gap: 12px; justify-items: center; }
+    .perm-brain { width: 220px; height: 220px; border-radius: 999px; display: grid; place-items: center; text-align: center; color: var(--cream); border-color: rgba(254,80,0,.46); box-shadow: 0 0 70px rgba(254,80,0,.20); font-size: 34px; }
+    .perm-brain strong { display: block; color: var(--cream); font-size: 22px; line-height: 1; letter-spacing: -.04em; }
+    .perm-brain span { display: block; color: var(--muted); font: 800 10px var(--mono); margin-top: 8px; text-transform: uppercase; }
+    .perm-note { color: var(--muted); text-align: center; max-width: 360px; }
+    .permission-rules { margin-top: 18px; }
+
+    .permission-diagram { position: relative; min-height: 390px; display: grid; grid-template-columns: 1fr 1.1fr 1fr; gap: 26px; align-items: center; margin-bottom: 18px; }
+    .perm-arrows { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+    .pa { fill: none; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 8 8; opacity: .82; }
+    .pa.orange { stroke: var(--orange); }
+    .pa.lilac { stroke: var(--lilac); }
+    .pa.blue { stroke: var(--blue3); }
+    .pd-left, .pd-center, .pd-right { position: relative; z-index: 1; }
+    .pd-left, .pd-right { display: grid; gap: 12px; }
+    .pd-node { border-radius: 22px; border: 1px solid var(--line); background: rgba(242,241,237,.075); padding: 15px 16px; box-shadow: 0 14px 38px rgba(0,0,0,.16); text-align: center; color: var(--muted); font-weight: 900; }
+    .pd-node.agent { color: var(--cream); }
+    .pd-node strong { color: var(--orangeLight); }
+    .pd-node.shared strong { color: #EBD9FF; }
+    .pd-node.team strong { color: #AEB8FF; }
+    .pd-node span { display: block; margin-top: 4px; color: var(--muted); font: 800 10px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+    .pd-center { display: grid; justify-items: center; gap: 16px; }
+    .pd-brain { width: 230px; height: 230px; border-radius: 999px; display: grid; place-items: center; text-align: center; color: var(--cream); border: 1px solid rgba(254,80,0,.55); background: radial-gradient(circle at 50% 26%, rgba(254,80,0,.22), rgba(242,241,237,.07) 46%, rgba(16,28,126,.38)); box-shadow: 0 0 80px rgba(254,80,0,.23); padding: 26px; font-size: 32px; }
+    .pd-brain strong { display: block; color: var(--cream); font-size: 24px; line-height: .98; letter-spacing: -.045em; }
+    .pd-brain span { display: block; color: var(--muted); font: 800 10px var(--mono); margin-top: 8px; text-transform: uppercase; }
+    .pd-caption { max-width: 360px; color: var(--muted); text-align: center; border: 1px solid var(--line); background: rgba(242,241,237,.075); border-radius: 22px; padding: 16px; }
+
+
+    .sync-quote { margin-top: 18px; }
+    .openclaw-flow { margin-bottom: 18px; }
+    .footer { margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; display: flex; justify-content: space-between; gap: 20px; }
+    @media (max-width: 980px) {
+      .brandbar { align-items: flex-start; flex-direction: column; }
+      .hero { min-height: auto; padding: 38px 24px; }
+      .hero-grid, .grid-3, .grid-4, .story, .flow, .artifact, .next { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .flow-step:not(:last-child):after { content: "↓"; right: 50%; top: auto; bottom: -25px; transform: translateX(50%); }
+      .rule { grid-template-columns: 1fr; }
+      .rule .then { justify-self: start; }
+      .footer { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="brandbar">
+      <div class="brand"><span class="mark"><i></i><i></i><i></i><i></i></span> Pixel Educação</div>
+      <div class="course-badge">Pixel AI Hub · Material 0 · Dark</div>
+    </header>
+
+    <section class="hero">
+      <div class="kicker">Segundo cérebro para agentes</div>
+      <h1>Sua empresa <span>esquece</span>. <strong>Seu agente também.</strong></h1>
+      <p class="lead">Toda vez que você troca de ferramenta, abre um chat novo ou chama outra pessoa para ajudar, o contexto se perde. O segundo cérebro resolve isso: ele vira a memória operacional que qualquer agente consegue consultar.</p>
+      <div class="punch">Ferramenta é <em>interface</em>. Segundo cérebro é <em>infraestrutura</em>.</div>
+      <div class="hero-grid">
+        <div class="mini"><b>Dor</b><span>Informação espalhada em WhatsApp, reunião, docs e cabeça do fundador.</span></div>
+        <div class="mini"><b>Virada</b><span>Contexto deixa de morar no chat e passa a morar no cérebro.</span></div>
+        <div class="mini"><b>Resultado</b><span>Agentes trabalham com memória real, não com improviso.</span></div>
+        <div class="mini"><b>Hoje</b><span>Você só precisa entender o mapa. Instalação vem depois.</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="eyebrow">A história</div><h2>O João não tem problema de IA. <strong>Ele tem problema de memória.</strong></h2></div>
+        <p class="sub">Use esta história como exemplo mental durante o resto da aula. Se fizer sentido para o João, faz sentido para qualquer empresa pequena.</p>
+      </div>
+      <div class="story">
+        <div class="card persona orange-card">
+          <div class="avatar">J</div>
+          <h3>João, founder de uma empresa enxuta</h3>
+          <p>Ele usa ChatGPT para pensar, Claude para escrever, WhatsApp para tocar o time, Notion para guardar coisa, planilha para operação e reunião para decidir.</p>
+          <p><strong>O problema:</strong> nada disso conversa direito. Toda ferramenta sabe um pedaço. Ninguém sabe o todo.</p>
+        </div>
+        <div class="card">
+          <span class="tag orange">Antes do segundo cérebro</span>
+          <div class="chaos-list">
+            <div class="chaos"><b>Decisão importante morre no WhatsApp</b><span>Uma semana depois ninguém lembra por que escolheu aquele caminho.</span></div>
+            <div class="chaos"><b>O agente pergunta tudo de novo</b><span>ICP, produto, tom de voz, prioridades, restrições, pessoas.</span></div>
+            <div class="chaos"><b>O time depende da cabeça do founder</b><span>Se João não está na conversa, a operação perde qualidade.</span></div>
+            <div class="chaos"><b>Mais ferramenta aumenta o caos</b><span>Porque o contexto está fragmentado, não centralizado.</span></div>
+          </div>
+          <h4>A pergunta certa não é “qual IA eu uso?”</h4>
+          <p>A pergunta certa é: <strong>onde vive o contexto que qualquer IA precisa para trabalhar bem?</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="eyebrow">Definição simples</div><h2>Segundo cérebro é o lugar onde <strong>contexto vira operação.</strong></h2></div>
+        <p class="sub">Não é uma pasta bonita. Não é Notion. Não é GitHub. Não é Obsidian. Esses podem ser interfaces ou infraestrutura. O cérebro é o sistema de memória.</p>
+      </div>
+      <div class="big-quote">Um segundo cérebro para IA transforma informação solta em <span>memória organizada, encontrável e acionável</span> por agentes.</div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="eyebrow">O fluxo que precisa ficar claro</div><h2>Informação entra bagunçada. <strong>Sai como contexto usável.</strong></h2></div>
+        <p class="sub">Se o aluno entender este fluxo, ele entende o segundo cérebro.</p>
+      </div>
+      <div class="flow">
+        <div class="flow-step"><div class="n">1</div><h3>Entra</h3><p>Áudio, reunião, ideia, decisão, feedback, WhatsApp, documento.</p></div>
+        <div class="flow-step"><div class="n">2</div><h3>Cai no inbox</h3><p>Não precisa nascer perfeito. Primeiro captura; depois organiza.</p></div>
+        <div class="flow-step"><div class="n">3</div><h3>Classifica</h3><p>É pessoal? Sensível? Operacional? Projeto? Pessoa? Processo?</p></div>
+        <div class="flow-step"><div class="n">4</div><h3>Vira memória</h3><p>Vai para arquivos, mapas, decisões, skills, rotinas e projetos.</p></div>
+        <div class="flow-step"><div class="n">5</div><h3>Agente usa</h3><p>Na próxima tarefa, ele consulta o cérebro antes de responder ou agir.</p></div>
+      </div>
+    </section>
+
+
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="eyebrow">Na prática com OpenClaw</div><h2>Você captura. <strong>O sistema organiza e sincroniza.</strong></h2></div>
+        <p class="sub">O aluno não precisa virar bibliotecário da própria empresa. A operação ideal é simples: falar com o agente, deixar cair no inbox e deixar a rotina consolidar.</p>
+      </div>
+      <div class="flow openclaw-flow">
+        <div class="flow-step"><div class="n">1</div><h3>Você fala</h3><p>“Salva isso”, “guarda essa decisão”, “isso é importante para o projeto X”.</p></div>
+        <div class="flow-step"><div class="n">2</div><h3>OpenClaw captura</h3><p>Ele registra no inbox com data, origem e contexto bruto. Primeiro captura; depois lapida.</p></div>
+        <div class="flow-step"><div class="n">3</div><h3>Rotina consolida</h3><p>Um ciclo recorrente classifica: decisão, pessoa, projeto, processo, skill ou pendência.</p></div>
+        <div class="flow-step"><div class="n">4</div><h3>Git sincroniza</h3><p>A cada janela definida — exemplo: 30 minutos — o cérebro é commitado e sincronizado.</p></div>
+        <div class="flow-step"><div class="n">5</div><h3>Agente lembra</h3><p>Na próxima tarefa, ele consulta a memória antes de responder ou executar.</p></div>
+      </div>
+      <div class="big-quote sync-quote">A promessa não é “organização perfeita automática”. É <span>captura automática + consolidação assistida + sync recorrente</span>.</div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="eyebrow">Os 3 pilares</div><h2>Todo cérebro bom tem <strong>contexto, skills e rotinas.</strong></h2></div>
+        <p class="sub">Esses pilares são mais importantes que a ferramenta. Eles sobrevivem quando você troca de Claude para OpenClaw, Cursor, ChatGPT ou qualquer outro modelo.</p>
+      </div>
+      <div class="grid-3 pillars">
+        <div class="card" data-n="1"><span class="tag orange">Contexto</span><h3>O que o agente precisa saber</h3><p>Quem é você, qual é o negócio, quais projetos existem, quais decisões foram tomadas, quem são as pessoas e o que é prioridade agora.</p><h4>Sem contexto</h4><p>O agente vira estagiário novo em toda conversa.</p></div>
+        <div class="card lilac-card" data-n="2"><span class="tag lilac">Skills</span><h3>Como o agente executa</h3><p>Skill é processo repetível documentado. Prompt resolve uma vez; skill transforma descoberta em capacidade permanente.</p><h4>Exemplo</h4><p>Publicar conteúdo, gerar relatório, classificar inbox, emitir nota, fazer pesquisa.</p></div>
+        <div class="card blue-card" data-n="3"><span class="tag white">Rotinas</span><h3>Quando o agente age</h3><p>Rotina é o que tira o agente do modo “me responde” e coloca no modo “me ajuda a operar”.</p><h4>Exemplo</h4><p>Briefing diário, heartbeat, follow-up, revisão semanal, consolidação noturna.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="eyebrow">Regra de bolso</div><h2>Onde cada coisa vai?</h2></div>
+        <p class="sub">Essa é a parte que precisa grudar. O aluno não precisa decorar arquitetura. Precisa saber decidir destino.</p>
+      </div>
+      <div class="card">
+        <div class="rule"><div class="if">Se só você precisa saber</div><div class="connector">→</div><div class="then personal">Cérebro pessoal</div></div>
+        <div class="rule"><div class="if">Se é sensível, nominal ou jurídico</div><div class="connector">→</div><div class="then board">Cérebro diretoria</div></div>
+        <div class="rule"><div class="if">Se o time precisa operar com isso</div><div class="connector">→</div><div class="then team">Cérebro time</div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="eyebrow">Os 3 cérebros</div><h2>A arquitetura completa parece grande, <strong>mas a decisão é simples.</strong></h2></div>
+        <p class="sub">Você não precisa ligar todos no primeiro dia. Cada cérebro existe para uma pergunta diferente.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card brain orange-card" data-step="1"><span class="tag orange">Pessoal</span><h3>“Meu agente me conhece?”</h3><p>Guarda preferências, rotina, jeito de trabalhar, ideias pessoais, projetos individuais e contexto que não precisa ir para a empresa.</p><h4>Exemplo</h4><p>“Prefiro revisar conteúdo à noite.”</p></div>
+        <div class="card brain lilac-card" data-step="2"><span class="tag lilac">Diretoria</span><h3>“Isso é sensível?”</h3><p>Guarda decisões com dinheiro, pessoas, contratos, jurídico, governança e alinhamentos de sócios/diretores.</p><h4>Exemplo</h4><p>“Vamos dar bônus de R$ 5k para Ana.”</p></div>
+        <div class="card brain blue-card" data-step="3"><span class="tag white">Time</span><h3>“O time precisa usar?”</h3><p>Guarda processos, clientes, áreas, aprendizados, tarefas recorrentes e contexto operacional compartilhado.</p><h4>Exemplo</h4><p>“Novo processo de onboarding de clientes.”</p></div>
+      </div>
+    </section>
+
+
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="eyebrow">Por que 3 cérebros?</div><h2>Não é complexidade. <strong>É permissionamento.</strong></h2></div>
+        <p class="sub">A empresa não tem uma memória única porque nem todo mundo pode acessar tudo. Separar os cérebros evita vazamento, reduz ruído e permite que cada diretor tenha seu próprio contexto.</p>
+      </div>
+      <div class="permission-diagram">
+        <svg class="perm-arrows" viewBox="0 0 1100 390" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <marker id="arrow-orange" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto"><polygon points="0 0,9 4,0 8" fill="#FE5000"/></marker>
+            <marker id="arrow-lilac" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto"><polygon points="0 0,9 4,0 8" fill="#D8B3FD"/></marker>
+            <marker id="arrow-blue" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto"><polygon points="0 0,9 4,0 8" fill="#606FEF"/></marker>
+          </defs>
+          <path class="pa orange" d="M170 78 C265 78 300 125 405 162" marker-end="url(#arrow-orange)"/>
+          <path class="pa orange" d="M170 174 C260 174 305 174 405 190" marker-end="url(#arrow-orange)"/>
+          <path class="pa lilac" d="M170 292 C290 292 326 244 405 216" marker-end="url(#arrow-lilac)"/>
+          <path class="pa blue" d="M680 160 C770 112 800 82 930 78" marker-end="url(#arrow-blue)"/>
+          <path class="pa blue" d="M680 214 C770 258 802 294 930 300" marker-end="url(#arrow-blue)"/>
+        </svg>
+        <div class="pd-left">
+          <div class="pd-node person">Diretor 1</div>
+          <div class="pd-node agent">OpenClaw<br/><strong>Diretor 1</strong><span>cérebro pessoal</span></div>
+          <div class="pd-node agent shared">OpenClaw<br/><strong>Diretores</strong><span>liderança</span></div>
+        </div>
+        <div class="pd-center">
+          <div class="pd-brain">🧠<strong>Cérebro<br/>Diretoria</strong><span>sensível · GitHub Repo</span></div>
+          <div class="pd-caption">O que é compartilhado entre liderança entra aqui. O que é individual fica no cérebro pessoal de cada diretor.</div>
+        </div>
+        <div class="pd-right">
+          <div class="pd-node agent team">OpenClaw<br/><strong>Vendas</strong><span>só vendas + geral</span></div>
+          <div class="pd-node person">Colaborador Vendas</div>
+          <div class="pd-node agent team">OpenClaw<br/><strong>Marketing</strong><span>só marketing + geral</span></div>
+          <div class="pd-node person">Colaborador Mkt</div>
+        </div>
+      </div>
+      <div class="grid-3 permission-rules">
+        <div class="card"><span class="tag orange">Pessoal</span><h3>Um por diretor</h3><p>Preferências, rotina, ideias, contexto individual e memória que não precisa virar informação da empresa.</p></div>
+        <div class="card lilac-card"><span class="tag lilac">Diretoria</span><h3>Compartilhado sensível</h3><p>Dinheiro, contratos, pessoas, jurídico, sócios e decisões que precisam de governança.</p></div>
+        <div class="card blue-card"><span class="tag white">Time</span><h3>Operacional limitado</h3><p>Agentes e colaboradores acessam só o contexto da área e o contexto geral da empresa.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="eyebrow">Anatomia</div><h2>Por dentro, o cérebro é feito de <strong>arquivos simples.</strong></h2></div>
+        <p class="sub">A mágica não é o arquivo. A mágica é o acordo: cada arquivo tem um papel claro para o agente.</p>
+      </div>
+      <div class="artifact">
+        <div class="file"><b>SOUL.md</b><p>Quem é o agente e como ele se comporta.</p></div>
+        <div class="file"><b>USER.md</b><p>Quem ele serve e o que importa para essa pessoa.</p></div>
+        <div class="file"><b>MAPA.md</b><p>Onde procurar cada coisa. É a bússola.</p></div>
+        <div class="file"><b>MEMORY.md</b><p>Memória curada e decisões importantes.</p></div>
+        <div class="file"><b>skills/</b><p>Processos repetíveis que viram capacidade.</p></div>
+        <div class="file"><b>HEARTBEAT.md</b><p>Como o agente acorda e acompanha o que importa.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="eyebrow">Portabilidade</div><h2>A ferramenta muda. <strong>O cérebro fica.</strong></h2></div>
+        <p class="sub">Depois que o contexto está organizado, Claude, OpenClaw, Cursor ou ChatGPT viram janelas diferentes para a mesma memória.</p>
+      </div>
+      <div class="grid-4">
+        <div class="card"><span class="tag blue">Claude</span><h3>Pensa e escreve</h3><p>Bom para trabalho profundo, estratégia, roteiro e revisão.</p></div>
+        <div class="card"><span class="tag orange">OpenClaw</span><h3>Opera 24/7</h3><p>Bom para canais, crons, heartbeats, ferramentas e agentes contínuos.</p></div>
+        <div class="card"><span class="tag blue">Cursor</span><h3>Codifica</h3><p>Bom para projeto técnico com contexto real e padrões claros.</p></div>
+        <div class="card"><span class="tag lilac">Próximo modelo</span><h3>Entra depois</h3><p>Quando surgir ferramenta nova, você leva o cérebro junto.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="eyebrow">Depois deste material</div><h2>Qual aula assistir agora?</h2></div>
+        <p class="sub">A sequência evita overwhelm: primeiro entender, depois ativar, depois escalar.</p>
+      </div>
+      <div class="grid-4">
+        <div class="card orange-card"><span class="tag orange">Material 1</span><h3>Cérebro pessoal</h3><p>Primeira vitória: montar um agente que entende você e consulta sua memória.</p></div>
+        <div class="card lilac-card"><span class="tag lilac">Material 2</span><h3>Diretoria</h3><p>Quando há sócios, dinheiro, pessoas, contratos e decisões sensíveis.</p></div>
+        <div class="card blue-card"><span class="tag white">Material 3</span><h3>Time</h3><p>Quando a empresa precisa operar com contexto compartilhado.</p></div>
+        <div class="card"><span class="tag blue">Aulão</span><h3>Juntando tudo</h3><p>Como transformar os cérebros em sistema operacional da empresa.</p></div>
+      </div>
+    </section>
+
+    <section class="section"><div class="big-quote">Se você lembrar de uma coisa: <span>IA boa não começa na ferramenta.</span> Começa no contexto que ela consegue acessar.</div></section>
+
+    <footer class="footer">
+      <div><strong>Pixel Educação · Pixel AI Hub</strong><br/>Material 0 — O que é segundo cérebro para agentes de IA · v4 com sync OpenClaw + permissionamento visual</div>
+      <div>Dark test · Brand tokens: #101C7E · #FE5000 · #D8B3FD · #F2F1ED</div>
+    </footer>
+  </main>
+</body>
+</html>

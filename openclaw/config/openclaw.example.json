@@ -1,0 +1,41 @@
+{
+  "agents": {
+    "defaults": {
+      "workspace": "C:\\Users\\aliss\\.openclaw\\workspace",
+      "model": {
+        "primary": "openai-codex/gpt-5.5"
+      },
+      "models": {
+        "openai-codex/gpt-5.5": {}
+      }
+    }
+  },
+  "gateway": {
+    "mode": "local",
+    "bind": "loopback",
+    "port": 18789,
+    "auth": {
+      "mode": "token",
+      "token": "LOCAL_TOKEN_NOT_VERSIONED"
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true
+    }
+  },
+  "commands": {
+    "ownerAllowFrom": [
+      "telegram:SEU_ID_AQUI"
+    ]
+  },
+  "auth": {
+    "profiles": {
+      "openai-codex:SEU_EMAIL": {
+        "provider": "openai-codex",
+        "mode": "oauth"
+      }
+    }
+  }
+}
+

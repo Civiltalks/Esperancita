@@ -1,0 +1,61 @@
+# 📍 Cheatsheets — referência rápida do mini-curso
+
+> 10 cheatsheets que cobrem os principais temas do mini-curso. Cada um é mapa de bolso — abre quando precisar lembrar de algo específico.
+
+---
+
+## O que tem aqui
+
+| Cheatsheet | Cobre |
+|------------|-------|
+| `onboarding-do-seu-agente.md` | A1 · Setup inicial · OpenAI API + OAuth ChatGPT + Telegram DM |
+| `identidade-do-seu-agente.md` | A5 · SOUL · IDENTITY · USER · AGENTS |
+| `workspace-do-seu-agente.md` | A6 · Estrutura canônica · MAPAs distribuídos |
+| `memoria-do-seu-agente.md` | A7 · Os 3 tipos de memória + higiene de contexto |
+| `skills-do-seu-agente.md` | A8 · Skill vs prompt · 6 skills curadas · criar skill custom |
+| `crons-do-seu-agente.md` | A9 · Cron + heartbeat · 4 categorias · meta-cron |
+| `outros-canais.md` | A11 · 24 canais nativos do OpenClaw |
+| `integracoes-de-produtividade.md` | A12 · 4 padrões de auth · Notion · GitHub · Calendar |
+| `multi-agente.md` | A13 · Subagente vs paralelo · arquitetura · handoff |
+| `mission-control.md` | A14 · Dashboard customizado · workflow do Bruno |
+
+---
+
+## Como usar (humano)
+
+Trava em algo durante o uso? Abre o cheatsheet correspondente. Cada um tem:
+- **Resumo executivo em 1 minuto**
+- **Tabelas de comandos** validadas na doc oficial
+- **5 prompts prontos pra colar** no agente
+- **Troubleshooting** dos sintomas mais comuns
+- **Princípios A10** (segurança aplicada ao tema)
+
+---
+
+## Como usar com sua IA (3 passos)
+
+1. Baixa esta pasta inteira (botão direito → Fazer download)
+2. Anexa o zip no Claude.ai · ChatGPT · sua IA preferida
+3. Manda esse prompt:
+
+> Lê os 10 cheatsheets do mini-curso OpenClaw. São referências práticas pra cada tema do curso.
+> Quando eu te perguntar sobre qualquer tópico (memória · skills · crons · etc),
+> consulta o cheatsheet correspondente e me responde com base no conteúdo dele.
+
+Pronto. Sua IA virou referência viva sobre cada tema.
+
+---
+
+## Atualização
+
+Cheatsheets nascem do `starter-kit/cheatsheets/` interno do kit. Toda release nova do kit pode atualizar 1+ cheatsheet. Última atualização: **04/05/2026** (kit v2.5.3).
+
+---
+
+## Suporte
+
+Comunidade WhatsApp do Pixel AI Hub: <https://chat.whatsapp.com/BRN2zv1usfL11u07HVdsL2>
+
+---
+
+📌 Atualizado em 04/05/2026 · Pixel Educação

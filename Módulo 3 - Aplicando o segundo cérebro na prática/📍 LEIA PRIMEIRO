@@ -1,0 +1,57 @@
+# 📍 Módulo 3 — Aplicando o segundo cérebro na prática
+
+DIA 2 parte aplicação. **Bot de suporte ao vivo · loop de aprendizado · 3 templates de cérebro.**
+
+---
+
+## Estrutura
+
+| Pasta | O que tem |
+|-------|-----------|
+| 📊 **Slides/** | HTMLs dos slides de aplicação do DIA 2 |
+| 📚 **Materiais/** | Casos práticos · timeline · exemplo Rafael |
+| 🧰 **Templates/** | **3 zips de templates** (pessoal · diretoria · empresa) — peça central da imersão |
+| 📝 **Transcrição/** | Texto da parte de aplicação |
+
+---
+
+## Bloco principal
+
+| Hora | Bloco | Conteúdo |
+|------|-------|----------|
+| 10:51 | Bloco 10 🔥 | **Loop de aprendizado** · estrutura 3 arquivos · demo bot responde FAQ · demo bot escala dúvida nova · consolidar FAQ + bot aprende · **3º AHA MOMENT** (o maior) |
+
+---
+
+## Os 3 templates de cérebro (peça central)
+
+Os zips na pasta `Templates/` representam os 3 níveis de cérebro corporativo:
+
+### 1️⃣ Pessoal — `template-pessoal-0.1.0.zip`
+- Cérebro individual do empreendedor
+- O que mora aqui: ideias soltas · daily notes · pendências pessoais · contexto profissional próprio
+- Privacidade: max — só você vê
+
+### 2️⃣ Diretoria — `template-diretoria-0.1.0.zip`
+- Cérebro confidencial dos sócios
+- O que mora aqui: contratos · salários · negociações · informações sensíveis
+- Privacidade: alta — só sócios + agentes da diretoria
+- ⚠️ **Sempre revisado por humano antes de salvar** (não auto-commit)
+
+### 3️⃣ Empresa — `template-empresa-0.1.0.zip`
+- Cérebro coletivo da empresa
+- O que mora aqui: operação · marketing · vendas · contexto compartilhado pelo time
+- Privacidade: time inteiro acessa
+- Auto-commit OK pra gatilhos não-sensíveis
+
+> **Exemplo Rafael (case na imersão):** dono de restaurante manda áudio dirigindo. Mensagem cai automaticamente no cérebro certo (pessoal · empresa · diretoria) baseado em palavras-chave. Sem ele escolher pasta.
+
+---
+
+## Aulão bônus
+
+Material complementar **`aulao-bonus-modular-cerebros.html`** (em **Materiais/**) aprofunda como cada cérebro se conecta com os outros sem vazar contexto.
+
+---
+
+📌 Atualizado em 04/05/2026 · Pixel Educação

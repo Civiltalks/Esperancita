@@ -1,0 +1,57 @@
+# 📍 Cases — exemplos reais de agentes em produção
+
+> Casos reais de agentes OpenClaw rodando há meses em negócios de verdade. Inspiração concreta pra você visualizar como pode ser o seu.
+
+---
+
+## O que tem aqui
+
+| Arquivo | Quem | O que mostra |
+|---------|------|--------------|
+| **`case-amora.md`** | Bruno Okamoto · Pixel Educação | Chief of Staff multi-domínio (5 frentes) |
+| **`case-aurora-brunner.md`** | Brunner Vieira · loja de seminovos MG | "40 dias antes não sabia o que era terminal" |
+| **`case-igor-gouveia.md`** | Igor Gouveia · agência AI / e-commerce | Time multiagente (5 agentes especializados) |
+| **`case-filippe-cesar.md`** | Filippe César · 3 empresas | 1 agente por empresa + CoS coordenando |
+| **`case-chris-everest.md`** | Chris (Everest) · cardápios + postcards | Outbound híbrido digital + físico automático |
+
+---
+
+## Por que esses cases
+
+Cada um cobre um **arquétipo diferente** de uso do OpenClaw:
+
+- **Amora** — agente complexo de quem usa MUITO (Bruno opera 5+ frentes)
+- **Aurora** — agente de PME tradicional (loja física que virou tech-first)
+- **Igor** — agência usando multi-agente como diferencial competitivo
+- **Filippe** — empreendedor sócio em 3 empresas com agentes coordenados
+- **Chris** — outbound criativo que mistura digital com físico
+
+Você provavelmente vai se identificar com 1 ou 2 desses arquétipos. Use o case mais próximo como ponto de partida.
+
+---
+
+## Como usar
+
+1. **Lê o case mais próximo do seu negócio**
+2. **Identifica 1 ideia replicável** (não copia tudo — adapta)
+3. **Pergunta pro seu agente:** *"Olha esse case [cola texto] — como adapto pra meu contexto [descreve seu negócio]?"*
+
+---
+
+## Material complementar (legado)
+
+Além desses 5 cases curtos, existe o PDF **20-cases-openclaw.pdf** (versão V1 do curso) com casos adicionais. Pra ter agora, pede pro Bruno na comunidade.
+
+> O PDF original está em `Curso OpenClaw (2026)` legado no Drive — quando rolar a migração V1 → "Construindo agentes em servidor pessoal", o PDF entra automaticamente nesta pasta.
+
+---
+
+## Suporte
+
+Comunidade WhatsApp do Pixel AI Hub: <https://chat.whatsapp.com/BRN2zv1usfL11u07HVdsL2>
+
+Tem case próprio que merece estar aqui? Manda pro Bruno em <bruno@microsaas.com.br>.
+
+---
+
+📌 Atualizado em 04/05/2026 · Pixel Educação

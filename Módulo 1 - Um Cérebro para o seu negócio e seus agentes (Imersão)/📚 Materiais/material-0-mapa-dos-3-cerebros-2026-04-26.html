@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Material 0 — Mapa dos 3 Cérebros</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #070911;
+      --ink: #f7f8fc;
+      --muted: #9eaabd;
+      --soft: #d8deea;
+      --panel: rgba(18, 27, 45, .78);
+      --panel2: rgba(27, 39, 64, .88);
+      --line: rgba(255,255,255,.12);
+      --orange: #ff6a00;
+      --orange2: #ffb36d;
+      --blue: #4aa8ff;
+      --blue2: #9ed4ff;
+      --purple: #b28cff;
+      --purple2: #dacbff;
+      --green: #35d07f;
+      --green2: #aaf0cc;
+      --red: #ff5f6d;
+      --yellow: #ffd166;
+      --radius: 28px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      line-height: 1.55;
+      background:
+        radial-gradient(circle at 12% 4%, rgba(255,106,0,.24), transparent 30%),
+        radial-gradient(circle at 88% 18%, rgba(74,168,255,.20), transparent 30%),
+        radial-gradient(circle at 62% 78%, rgba(178,140,255,.18), transparent 34%),
+        linear-gradient(180deg, #070911 0%, #0b1020 58%, #05070d 100%);
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 42px 22px 100px; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 38px;
+      padding: 56px;
+      background: linear-gradient(135deg, rgba(25,36,60,.9), rgba(10,14,26,.72));
+      box-shadow: 0 34px 90px rgba(0,0,0,.38);
+    }
+    .hero:before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background:
+        linear-gradient(115deg, transparent 0 18%, rgba(255,255,255,.07) 18.2% 18.8%, transparent 19% 100%),
+        radial-gradient(circle at 84% 0%, rgba(255,106,0,.24), transparent 34%);
+      pointer-events: none;
+    }
+    .hero > * { position: relative; z-index: 1; }
+    .kicker {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 8px 14px;
+      border: 1px solid rgba(255,106,0,.36);
+      border-radius: 999px;
+      background: rgba(255,106,0,.14);
+      color: var(--orange2);
+      font: 700 12px 'IBM Plex Mono', monospace;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 950px;
+      margin: 26px 0 18px;
+      font-size: clamp(42px, 8vw, 88px);
+      line-height: .92;
+      letter-spacing: -.065em;
+    }
+    h1 span { color: var(--orange); }
+    .lead {
+      max-width: 850px;
+      margin: 0 0 30px;
+      color: var(--soft);
+      font-size: clamp(19px, 2.4vw, 25px);
+    }
+    .hero-meta { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; }
+    .mini {
+      min-height: 92px;
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(5,7,13,.48);
+    }
+    .mini b { display: block; margin-bottom: 4px; color: #fff; }
+    .mini span { color: var(--muted); font-size: 14px; }
+    .section { margin-top: 62px; }
+    .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 20px; }
+    .eyebrow { color: var(--orange); font: 700 12px 'IBM Plex Mono', monospace; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px; }
+    h2 { margin: 0; font-size: clamp(30px, 4.4vw, 50px); line-height: .98; letter-spacing: -.045em; }
+    .sub { max-width: 560px; margin: 0; color: var(--muted); }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, var(--panel2), var(--panel));
+      box-shadow: 0 18px 44px rgba(0,0,0,.24);
+      padding: 28px;
+    }
+    .quote {
+      padding: 30px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,106,0,.28);
+      background: linear-gradient(135deg, rgba(255,106,0,.18), rgba(255,255,255,.035));
+      font-size: clamp(25px, 3.2vw, 40px);
+      line-height: 1.08;
+      letter-spacing: -.04em;
+      color: #fff;
+    }
+    .systems {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 18px;
+    }
+    .brain {
+      position: relative;
+      overflow: hidden;
+      min-height: 470px;
+    }
+    .brain:before {
+      content: attr(data-number);
+      position: absolute;
+      top: -18px;
+      right: 18px;
+      color: rgba(255,255,255,.05);
+      font-size: 132px;
+      font-weight: 900;
+      letter-spacing: -.08em;
+      line-height: 1;
+    }
+    .tag {
+      display: inline-flex;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+    .tag.orange { color: var(--orange2); background: rgba(255,106,0,.14); border-color: rgba(255,106,0,.34); }
+    .tag.purple { color: var(--purple2); background: rgba(178,140,255,.14); border-color: rgba(178,140,255,.34); }
+    .tag.blue { color: var(--blue2); background: rgba(74,168,255,.14); border-color: rgba(74,168,255,.34); }
+    .tag.green { color: var(--green2); background: rgba(53,208,127,.14); border-color: rgba(53,208,127,.34); }
+    .tag.red { color: #ffbbc1; background: rgba(255,95,109,.14); border-color: rgba(255,95,109,.34); }
+    h3 { margin: 0 0 12px; font-size: 29px; line-height: 1.04; letter-spacing: -.03em; }
+    h4 { margin: 24px 0 8px; font-size: 16px; }
+    p { color: var(--muted); margin: 0 0 12px; }
+    strong { color: #fff; }
+    ul, ol { color: var(--muted); padding-left: 20px; margin: 10px 0 0; }
+    li { margin: 7px 0; }
+    code { font: 600 .92em 'IBM Plex Mono', monospace; color: #ffd9bd; background: rgba(255,106,0,.12); border: 1px solid rgba(255,106,0,.20); padding: 2px 6px; border-radius: 7px; }
+    .flow {
+      display: grid;
+      grid-template-columns: 1fr 58px 1fr 58px 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+    .flow-node {
+      min-height: 150px;
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.045);
+    }
+    .arrow {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,106,0,.30);
+      background: rgba(255,106,0,.12);
+      color: var(--orange2);
+      font-size: 25px;
+      font-weight: 900;
+    }
+    .decision-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+    .decision {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255,255,255,.04);
+      padding: 22px;
+    }
+    .decision .question { color: #fff; font-size: 21px; font-weight: 800; letter-spacing: -.02em; }
+    .decision .answer { margin-top: 10px; color: var(--muted); }
+    .matrix { display: grid; gap: 12px; }
+    .row { display: grid; grid-template-columns: 170px 1fr 1fr 1fr; gap: 12px; padding: 16px; border: 1px solid var(--line); border-radius: 20px; background: rgba(255,255,255,.035); }
+    .row.header { color: #fff; font-weight: 900; background: rgba(255,106,0,.10); border-color: rgba(255,106,0,.25); }
+    .cell-muted { color: var(--muted); }
+    .routing { display: grid; gap: 14px; }
+    .route { display: grid; grid-template-columns: 160px 1fr 220px; gap: 14px; align-items: center; padding: 18px; border: 1px solid var(--line); border-radius: 22px; background: rgba(255,255,255,.04); }
+    .role { font: 700 12px 'IBM Plex Mono', monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--orange2); }
+    .next { justify-self: end; padding: 9px 12px; border-radius: 999px; border: 1px solid rgba(74,168,255,.30); background: rgba(74,168,255,.12); color: var(--blue2); font-weight: 800; font-size: 13px; }
+    .two { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
+    .anatomy { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+    .atom { padding: 20px; border-radius: 22px; border: 1px solid var(--line); background: rgba(255,255,255,.04); min-height: 150px; }
+    .atom b { display: block; margin-bottom: 7px; color: #fff; font-size: 18px; }
+    .footer { margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    @media (max-width: 930px) {
+      .hero { padding: 36px 24px; }
+      .hero-meta, .systems, .decision-grid, .two, .anatomy { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .flow { grid-template-columns: 1fr; }
+      .arrow { width: 100%; }
+      .row, .route { grid-template-columns: 1fr; }
+      .next { justify-self: start; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="kicker">Material 0 · Fotografia geral</div>
+      <h1>Mapa dos <span>3 cérebros</span> da empresa com IA</h1>
+      <p class="lead">Antes de instalar qualquer coisa, o aluno precisa enxergar a arquitetura: qual cérebro existe, quem usa, que tipo de informação entra, como os agentes acessam contexto e qual trilha faz sentido para o papel dele.</p>
+      <div class="hero-meta">
+        <div class="mini"><b>Função</b><span>Orientar a rota antes do tutorial</span></div>
+        <div class="mini"><b>Formato</b><span>Visual, estratégico, sem terminal</span></div>
+        <div class="mini"><b>Resultado</b><span>Aluno escolhe por onde começar</span></div>
+        <div class="mini"><b>Trilha</b><span>Depois vem pessoal, diretoria e time</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="quote">A empresa não precisa de “um prompt melhor”. Ela precisa de uma memória organizada para que os agentes operem com contexto real.</div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">A fotografia</div>
+          <h2>Os 3 cérebros têm funções diferentes</h2>
+        </div>
+        <p class="sub">O erro didático é tratar tudo como um repositório só. Na prática, existem camadas de memória, privacidade e operação.</p>
+      </div>
+      <div class="systems">
+        <div class="card brain" data-number="1">
+          <span class="tag orange">Pessoal</span>
+          <h3>O cérebro da pessoa</h3>
+          <p><strong>Promessa:</strong> “meu agente lembra de mim”.</p>
+          <p>É a base individual. Todo mundo pode ter: founder, diretor, gestor, funcionário, freelancer.</p>
+          <h4>Guarda</h4>
+          <ul>
+            <li>Quem eu sou</li>
+            <li>Minhas rotinas</li>
+            <li>Meus projetos</li>
+            <li>Minhas preferências</li>
+            <li>Meu jeito de trabalhar</li>
+          </ul>
+          <h4>Quando começar por ele</h4>
+          <p>Quase sempre. É o menor risco, menor escopo e maior “uau” inicial.</p>
+        </div>
+        <div class="card brain" data-number="2">
+          <span class="tag purple">Diretoria</span>
+          <h3>O cérebro sensível</h3>
+          <p><strong>Promessa:</strong> “decisão importante não fica perdida”.</p>
+          <p>É compartilhado por sócios, founders e liderança com acesso a decisões sensíveis.</p>
+          <h4>Guarda</h4>
+          <ul>
+            <li>Dinheiro com nome</li>
+            <li>Pessoas e conflitos</li>
+            <li>Contratos e jurídico</li>
+            <li>Governança</li>
+            <li>Decisões estratégicas</li>
+          </ul>
+          <h4>Regra central</h4>
+          <p>Default privado. Se tem dúvida se é sensível, começa aqui.</p>
+        </div>
+        <div class="card brain" data-number="3">
+          <span class="tag blue">Time</span>
+          <h3>O cérebro operacional</h3>
+          <p><strong>Promessa:</strong> “o time opera com contexto comum”.</p>
+          <p>É a memória compartilhada da empresa: áreas, processos, clientes, entregas e aprendizados.</p>
+          <h4>Guarda</h4>
+          <ul>
+            <li>Marketing</li>
+            <li>Vendas</li>
+            <li>Atendimento</li>
+            <li>Operações</li>
+            <li>Produto</li>
+          </ul>
+          <h4>Quando ativar</h4>
+          <p>Quando a empresa precisa sair da memória individual e virar operação coletiva.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Como eles conversam</div>
+          <h2>O fluxo não é automático. É governado.</h2>
+        </div>
+        <p class="sub">O humano continua sendo a ponte entre camadas. Isso evita vazar contexto sensível e mantém o sistema compreensível.</p>
+      </div>
+      <div class="card">
+        <div class="flow">
+          <div class="flow-node">
+            <span class="tag orange">Captura</span>
+            <h3>Pessoa registra contexto</h3>
+            <p>Ideias, decisões, aprendizados, reuniões e observações começam no fluxo individual.</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="flow-node">
+            <span class="tag green">Decisão</span>
+            <h3>/team-sync ou revisão</h3>
+            <p>O humano decide se fica pessoal, vai para diretoria, vai para time ou vai para ambos.</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="flow-node">
+            <span class="tag blue">Consolidação</span>
+            <h3>Agente organiza</h3>
+            <p>O agente transforma inbox e capturas em memória canônica, mapas, rotinas e contexto utilizável.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Mapa de decisão</div>
+          <h2>Qual cérebro eu ligo primeiro?</h2>
+        </div>
+        <p class="sub">Este é o momento em que o aluno escolhe a trilha. O Material 0 termina com orientação, não com instalação.</p>
+      </div>
+      <div class="decision-grid">
+        <div class="decision">
+          <div class="question">Quero que meu agente me conheça melhor.</div>
+          <div class="answer">Comece pelo <strong>cérebro pessoal</strong>. É o bloco 1 da trilha.</div>
+        </div>
+        <div class="decision">
+          <div class="question">Tenho sócios e decisões sensíveis.</div>
+          <div class="answer">Faça <strong>pessoal</strong> primeiro; depois <strong>diretoria</strong>.</div>
+        </div>
+        <div class="decision">
+          <div class="question">Quero organizar a empresa inteira.</div>
+          <div class="answer">Faça <strong>pessoal</strong> para entender a anatomia; depois vá para <strong>time</strong>.</div>
+        </div>
+        <div class="decision">
+          <div class="question">Sou funcionário/colaborador.</div>
+          <div class="answer">Faça <strong>pessoal</strong>. Pule diretoria. Assista time para entender como contribuir.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Anatomia comum</div>
+          <h2>Todo cérebro tem os mesmos blocos mentais</h2>
+        </div>
+        <p class="sub">O Material 1 ensina isso em profundidade no cérebro pessoal. Depois, diretoria e time reaproveitam a mesma lógica.</p>
+      </div>
+      <div class="anatomy">
+        <div class="atom"><b>Identidade</b><p>Quem é o agente, qual papel ele exerce e como deve se comportar.</p></div>
+        <div class="atom"><b>Usuário / Organização</b><p>Quem ele serve, quais são as prioridades, restrições e contexto de negócio.</p></div>
+        <div class="atom"><b>Mapas</b><p>Onde encontrar cada coisa. O agente não precisa saber tudo; precisa saber onde procurar.</p></div>
+        <div class="atom"><b>Contexto</b><p>Projetos, pessoas, decisões, integrações, pendências e memória quente.</p></div>
+        <div class="atom"><b>Rotinas</b><p>Briefing, follow-up, revisão, captura, heartbeat e manutenção da memória.</p></div>
+        <div class="atom"><b>Skills</b><p>Playbooks reutilizáveis. Quando algo se repete, vira skill.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Comparativo</div>
+          <h2>O que entra em cada lugar</h2>
+        </div>
+        <p class="sub">Essa tabela é a âncora visual para reduzir confusão e evitar vazamento de contexto.</p>
+      </div>
+      <div class="card">
+        <div class="matrix">
+          <div class="row header"><div>Critério</div><div>Pessoal</div><div>Diretoria</div><div>Time</div></div>
+          <div class="row"><div><strong>Quem usa</strong></div><div class="cell-muted">Qualquer pessoa</div><div class="cell-muted">Founder, sócios, liderança</div><div class="cell-muted">Equipe, gestores, agentes operacionais</div></div>
+          <div class="row"><div><strong>Privacidade</strong></div><div class="cell-muted">Individual</div><div class="cell-muted">Default privado</div><div class="cell-muted">Default compartilhado</div></div>
+          <div class="row"><div><strong>Tipo de memória</strong></div><div class="cell-muted">Preferências, projetos, rotina</div><div class="cell-muted">Decisões sensíveis</div><div class="cell-muted">Operação e conhecimento coletivo</div></div>
+          <div class="row"><div><strong>Primeiro resultado</strong></div><div class="cell-muted">Agente responde com contexto pessoal</div><div class="cell-muted">Sócios têm memória estratégica</div><div class="cell-muted">Time trabalha com contexto comum</div></div>
+          <div class="row"><div><strong>Risco se errar</strong></div><div class="cell-muted">Baixo</div><div class="cell-muted">Alto: vazamento sensível</div><div class="cell-muted">Médio: bagunça operacional</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Roteamento final</div>
+          <h2>Depois deste material, para onde o aluno vai?</h2>
+        </div>
+        <p class="sub">A trilha não força todo mundo pelo mesmo caminho. Ela reduz fricção e aumenta chance de ativação.</p>
+      </div>
+      <div class="card routing">
+        <div class="route"><div class="role">Funcionário</div><div>Quer usar IA melhor no próprio trabalho e contribuir quando fizer sentido.</div><div class="next">Material 1 → Pessoal</div></div>
+        <div class="route"><div class="role">Gestor</div><div>Precisa organizar própria operação e depois conectar o time.</div><div class="next">1 → Pessoal, depois 3 → Time</div></div>
+        <div class="route"><div class="role">Founder</div><div>Precisa entender tudo: memória individual, governança sensível e operação coletiva.</div><div class="next">1 → 2 → 3</div></div>
+        <div class="route"><div class="role">Sócio/diretor</div><div>Precisa de memória pessoal e camada segura para decisões sensíveis.</div><div class="next">1 → Pessoal, depois 2 → Diretoria</div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="two">
+        <div class="card">
+          <span class="tag green">Mensagem para aluno</span>
+          <h3>Não tente montar tudo hoje.</h3>
+          <p>O objetivo é escolher a rota certa. A maioria começa pelo cérebro pessoal, sente o primeiro ganho e depois evolui para diretoria ou time.</p>
+        </div>
+        <div class="card">
+          <span class="tag red">Mensagem interna</span>
+          <h3>Não prometer auto-instalação plena ainda.</h3>
+          <p>Os templates rodam init, mas ainda têm P0s: placeholders residuais, docs inconsistentes e diretoria com privacidade contraditória. Material 0 pode ser público; tutoriais práticos dependem da limpeza.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p><strong>Arquivo:</strong> material-0-mapa-dos-3-cerebros-2026-04-26.html</p>
+      <p><strong>Função:</strong> mapa visual da arquitetura + roteamento do aluno para os materiais 1, 2 e 3.</p>
+    </footer>
+  </main>
+</body>
+</html>
