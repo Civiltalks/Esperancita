@@ -42,6 +42,22 @@ estacao de bootstrap ate a VPS aceitar SSH.
 O acesso SSH publico ainda nao esta funcional. Portanto, OpenClaw ainda nao foi
 instalado nem migrado para a VPS.
 
+Atualizacao em 2026-05-08:
+
+- A VPS foi reiniciada pelo usuario no painel.
+- Senha root foi informada ao operador, mas nao foi gravada em arquivo.
+- Portas testadas apos reboot: `22`, `2222`, `80`, `443`, `18789`.
+- Resultado: todas fechadas a partir da maquina local; ICMP/ping responde.
+- Recovery mode foi usado novamente para confirmar persistencia de:
+  - chave publica em `root` e `givrs`;
+  - `sshd_config.d/99-esperancita-access.conf`;
+  - `AllowUsers givrs root`;
+  - `ufw` desabilitado no arquivo de configuracao;
+  - `ufw` e `fail2ban` mascarados para diagnostico.
+- Mesmo assim, SSH publico continuou fechado. Isso indica que ainda existe
+  bloqueio fora do acesso SSH normal ou que o painel precisa executar reset
+  operacional de firewall/SSH.
+
 ## Acao necessaria no hPanel
 
 No painel da Hostinger da VPS `srv1577551.hstgr.cloud`:
