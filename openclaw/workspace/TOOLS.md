@@ -1,44 +1,68 @@
-# TOOLS.md - Local Notes
+# TOOLS.md - Ferramentas e ambiente da Esperancita
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+## Maquina local
 
-## What Goes Here
+- Windows user: `aliss`
+- Projeto local: `C:\Users\aliss\OneDrive\Desktop\Open Claw`
+- Estado OpenClaw: `C:\Users\aliss\.openclaw`
+- Workspace OpenClaw: `C:\Users\aliss\.openclaw\workspace`
+- OpenClaw CLI: `OpenClaw 2026.5.7`
+- Git: instalado
+- Node/npm: instalados
+- pnpm: instalado
+- Docker: nao instalado no diagnostico inicial
 
-Things like:
+## GitHub
 
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
+- Repo: `https://github.com/Civiltalks/Esperancita.git`
+- Branch principal: `main`
+- Remote local: `origin`
+- Token GitHub: nunca salvar em arquivo ou remote URL.
+- Fluxo: autenticar transitoriamente quando necessario.
 
-## Examples
+## OpenAI
 
-```markdown
-### Cameras
+- Conversa principal: OAuth OpenAI/Codex.
+- Perfil OAuth conhecido: `openai-codex:civiltalks.ai@gmail.com`
+- Modelo principal: `openai-codex/gpt-5.5`
+- `OPENAI_API_KEY`: usar apenas para Whisper/transcricao/API direta.
 
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
+## Telegram
 
-### SSH
+- Canal: `telegram/default`
+- Bot: Esperancita
+- Owner allowlist: `telegram:8413871765`
+- Regra: evitar dois gateways usando o mesmo bot ao mesmo tempo.
 
-- home-server → 192.168.1.100, user: admin
+## Hostinger
 
-### TTS
+- `HAPI_API_TOKEN`: configurado no ambiente de usuario.
+- API validada.
+- VPS detectadas:
+  - `srv1546212.hstgr.cloud` - `187.77.227.242` - Ubuntu 24.04 - SSH nao respondeu no teste local.
+  - `srv1577551.hstgr.cloud` - `2.24.30.151` - Ubuntu 24.04 - SSH respondeu na porta 22.
+- VPS recomendada para etapa de deploy: `srv1577551.hstgr.cloud`.
+- Pendente: chave SSH autorizada ou acesso seguro.
 
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
+## Comandos de verificacao
+
+```powershell
+openclaw --version
+openclaw config validate
+openclaw gateway status
+openclaw models status
+openclaw skills check --agent main
+git status --short --branch
 ```
 
-## Why Separate?
+## Comandos de risco
 
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
+Nao usar sem decisao humana explicita:
 
----
-
-Add whatever helps you do your job. This is your cheat sheet.
-
-## Related
-
-- [Agent workspace](/concepts/agent-workspace)
+```powershell
+git reset --hard
+git clean
+Remove-Item -Recurse
+rmdir /s
+del
+```

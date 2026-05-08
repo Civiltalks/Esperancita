@@ -1,0 +1,11 @@
+{
+  "entries": [
+    {
+      "date": "2026-05-08",
+      "context": "Usuario quer clareza sobre o que foi feito e o que falta.",
+      "decision": "prefer_direct_status",
+      "reason": "Evitar falsa sensacao de configuracao concluida quando ha pendencia externa.",
+      "tags": ["tom", "operacao", "clareza"]
+    }
+  ]
+}

@@ -29,11 +29,15 @@ private/
 **/auth-state.json
 **/sessions/
 **/sessions/**
+!openclaw/workspace/memory/sessions/
+!openclaw/workspace/memory/sessions/**
 **/*.jsonl
 **/*.trajectory.jsonl
 **/logs/
 **/logs/**
 *.log
+**/memory/.dreams/
+**/memory/.dreams/**
 
 # Local installation backups
 _BACKUP_INSTALACAO_OPENCLAW/
