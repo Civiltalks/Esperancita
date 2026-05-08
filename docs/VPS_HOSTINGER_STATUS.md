@@ -42,31 +42,60 @@ estacao de bootstrap ate a VPS aceitar SSH.
 O acesso SSH publico ainda nao esta funcional. Portanto, OpenClaw ainda nao foi
 instalado nem migrado para a VPS.
 
-Atualizacao em 2026-05-08:
+Atualizacao em 2026-05-08, fase 2:
 
-- A VPS foi reiniciada pelo usuario no painel.
-- Senha root foi informada ao operador, mas nao foi gravada em arquivo.
-- Portas testadas apos reboot: `22`, `2222`, `80`, `443`, `18789`.
-- Resultado: todas fechadas a partir da maquina local; ICMP/ping responde.
-- Recovery mode foi usado novamente para confirmar persistencia de:
-  - chave publica em `root` e `givrs`;
-  - `sshd_config.d/99-esperancita-access.conf`;
-  - `AllowUsers givrs root`;
-  - `ufw` desabilitado no arquivo de configuracao;
-  - `ufw` e `fail2ban` mascarados para diagnostico.
-- Mesmo assim, SSH publico continuou fechado. Isso indica que ainda existe
-  bloqueio fora do acesso SSH normal ou que o painel precisa executar reset
-  operacional de firewall/SSH.
+- A porta `22` voltou a responder externamente.
+- O problema atual nao e firewall externo; o bloqueio atual e autenticacao SSH.
+- Login externo por chave para `root` e `givrs` ainda falha com
+  `Permission denied (publickey,password)`.
+- Validacao externa feita por chave, sem senha:
+  - `Test-NetConnection 2.24.30.151 -Port 22`: `TcpTestSucceeded=True`;
+  - `ssh -i ... root@2.24.30.151`: `Permission denied`;
+  - `ssh -i ... givrs@2.24.30.151`: `Permission denied`.
+- O usuario `givrs` foi criado/preservado no sistema normal.
+- Em recovery, a chave publica correta foi instalada e validada em:
+  - `/root/.ssh/authorized_keys`;
+  - `/home/givrs/.ssh/authorized_keys`.
+- Em recovery, `sshd -T` confirmou:
+  - `permitrootlogin yes`;
+  - `pubkeyauthentication yes`;
+  - `passwordauthentication yes`;
+  - `authorizedkeysfile .ssh/authorized_keys`;
+  - `allowusers root`;
+  - `allowusers givrs`.
+- Mesmo assim, apos sair do recovery e voltar ao boot normal, os arquivos
+  escritos via disco montado foram revertidos:
+  - `/root/.ssh/authorized_keys` voltou com tamanho `0`;
+  - `/home/givrs/.ssh/authorized_keys` nao existia;
+  - `sshd_config` voltou a conter `AllowUsers givrs`;
+  - drop-ins e scripts de correcao criados em recovery nao existiam mais.
+- Um teste de persistencia com marcadores em `/root`, `/etc` e
+  `/usr/local/sbin` confirmou que alteracoes feitas no disco montado pelo
+  recovery nao persistiram ao boot normal.
 
-## Acao necessaria no hPanel
+Conclusao operacional: repetir a correcao pelo recovery nao e confiavel neste
+momento. A correcao precisa ser aplicada no sistema normal em execucao, pelo
+Terminal interno da Hostinger, ou por uma funcao do painel/API que injete a
+chave diretamente no sistema normal.
 
-No painel da Hostinger da VPS `srv1577551.hstgr.cloud`:
+## Acao necessaria agora
 
-1. Abrir `VPS` > `Manage`.
-2. Usar `Reset firewall`.
-3. Se SSH ainda falhar, usar `Reset SSH`.
-4. Reiniciar a VPS.
-5. Avisar para continuar o deploy.
+No Terminal interno da Hostinger da VPS `srv1577551.hstgr.cloud`, conectado ao
+sistema normal como `root`, executar o procedimento documentado em:
+
+- `docs/HOSTINGER_SSH_LIVE_FIX.md`
+
+Esse procedimento:
+
+1. cria backup de `/etc/ssh`, `/root/.ssh` e `/home/givrs/.ssh`;
+2. garante que `givrs` existe;
+3. adiciona a chave publica correta a `root` e `givrs`;
+4. corrige permissoes de `.ssh` e `authorized_keys`;
+5. ajusta `sshd_config`/drop-ins para `Port 22`, chave publica e acesso
+   temporario por senha;
+6. valida com `sshd -t`;
+7. reinicia o servico SSH;
+8. confirma que a porta `22` esta escutando.
 
 ## Teste depois do reset
 

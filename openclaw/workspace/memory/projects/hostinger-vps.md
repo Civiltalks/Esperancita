@@ -44,14 +44,28 @@ como estacao de bootstrap e backup ate o acesso SSH da VPS estar funcional.
 
 ### Pendencia bloqueante
 
-SSH publico ainda nao esta acessivel de forma estavel a partir da maquina local.
-Antes de instalar OpenClaw na VPS, e necessario executar no hPanel da Hostinger:
+SSH publico esta com a porta `22` aberta, mas a autenticacao ainda falha para
+`root` e `givrs` com `Permission denied (publickey,password)`.
 
-1. `Reset firewall`.
-2. Se ainda falhar, `Reset SSH`.
-3. Reiniciar a VPS.
+Diagnostico novo:
 
-Depois disso, testar:
+- A chave publica correta foi gravada e validada via recovery em `root` e
+  `givrs`.
+- `sshd -T` no disco montado confirmou `PermitRootLogin yes`,
+  `PubkeyAuthentication yes`, `PasswordAuthentication yes`,
+  `AuthorizedKeysFile .ssh/authorized_keys` e `AllowUsers root/givrs`.
+- Depois de sair do recovery e voltar ao boot normal, os arquivos gravados via
+  recovery foram revertidos: `authorized_keys` do root voltou vazio,
+  `authorized_keys` de `givrs` sumiu e o `sshd_config` voltou a restringir para
+  `AllowUsers givrs`.
+- Testes com marcadores em `/root`, `/etc` e `/usr/local/sbin` confirmaram que
+  alteracoes feitas pelo recovery offline nao persistem de forma confiavel no
+  boot normal.
+
+Acao correta agora: aplicar a correcao no sistema normal pelo Terminal interno
+da Hostinger, como `root`, usando `docs/HOSTINGER_SSH_LIVE_FIX.md`.
+
+Depois disso, testar do Windows:
 
 ```powershell
 ssh -i $env:USERPROFILE\.ssh\esperancita_hostinger_ed25519 givrs@2.24.30.151 "hostname && whoami"
