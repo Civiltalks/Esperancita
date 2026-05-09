@@ -125,6 +125,10 @@ O gateway escuta apenas localmente:
 - Reboot da VPS: OK.
 - Servico subiu automaticamente apos reboot: OK.
 - Teste de agente apos reboot: resposta `VPS_REBOOT_OK`.
+- Memoria permanente Super Esperancita sincronizada para
+  `/home/givrs/.openclaw/workspace`: OK.
+- Testes de identidade, criterios inegociaveis e rotina de mae sobrecarregada:
+  OK.
 
 ## Comandos de verificacao
 
@@ -175,6 +179,22 @@ credencial propria depois, sem salvar PAT em arquivos versionados.
 - Push GitHub a partir da VPS: pendente de decisao sobre credencial segura.
 - Hardening futuro: trocar `PermitRootLogin yes` para chave somente ou
   restringir root depois de validar toda a operacao 24/7 por alguns ciclos.
+- Investigar `sqlite-vec unavailable`, pois o recall vetorial esta degradado.
+- Monitorar `openclaw health` quando retornar `degraded` por CPU/event loop.
+
+## Memoria permanente Super Esperancita
+
+Backup remoto antes da sincronizacao:
+
+```text
+/home/givrs/.openclaw/backups/workspace-before-super-esperancita-2026-05-08_205602
+```
+
+Documentacao detalhada:
+
+```text
+docs/SUPER_ESPERANCITA_MEMORIA_PERMANENTE.md
+```
 
 ## Recuperacao
 

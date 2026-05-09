@@ -39,6 +39,14 @@ openclaw channels status --probe
 openclaw agent --local --agent main -m "Responda exatamente: OK_OPENCLAW" --json --timeout 300
 ```
 
+Verificacao da memoria permanente Super Esperancita:
+
+```bash
+openclaw agent --local --agent main -m "Explique em 5 linhas quem e a Esperancita, qual sua missao e como voce deve agir." --json --timeout 300
+openclaw agent --local --agent main -m "Quais sao seus criterios inegociaveis de funcionamento?" --json --timeout 300
+openclaw agent --local --agent main -m "Como voce deve ajudar uma mae sobrecarregada a organizar a rotina da casa?" --json --timeout 300
+```
+
 Logs:
 
 ```bash
@@ -259,6 +267,18 @@ GitHub esta clonado na VPS em:
 
 O gateway local do Windows foi parado para evitar polling duplicado do Telegram.
 
+## Backup rapido do workspace remoto
+
+Antes de alterar memoria, workspace, skills ou configuracao na VPS:
+
+```bash
+TS=$(date +%F_%H%M%S)
+BACKUP=/home/givrs/.openclaw/backups/workspace-manual-$TS
+mkdir -p /home/givrs/.openclaw/backups
+cp -a /home/givrs/.openclaw/workspace "$BACKUP"
+du -sh "$BACKUP"
+```
+
 ## Hostinger API
 
 Token configurado como variavel de ambiente de usuario `HAPI_API_TOKEN`. O valor nao deve ser escrito em arquivos.
@@ -285,4 +305,6 @@ Invoke-RestMethod -Method Get -Uri 'https://developers.hostinger.com/api/vps/v1/
 }
 ```
 
-Observacao: isso valida acesso a Hostinger, mas nao hospeda o OpenClaw automaticamente. Para hospedar, ainda e necessario escolher uma VPS, definir metodo de acesso SSH/painel e migrar o estado com backup.
+Observacao: isso valida acesso a Hostinger. A VPS permanente ja e
+`srv1577551.hstgr.cloud` (`2.24.30.151`); nao repetir migracao ou instalacao sem
+backup e motivo claro.

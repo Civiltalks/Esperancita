@@ -36,13 +36,14 @@
 
 ## Hostinger
 
-- `HAPI_API_TOKEN`: configurado no ambiente de usuario.
-- API validada.
-- VPS detectadas:
-  - `srv1546212.hstgr.cloud` - `187.77.227.242` - Ubuntu 24.04 - SSH nao respondeu no teste local.
-  - `srv1577551.hstgr.cloud` - `2.24.30.151` - Ubuntu 24.04 - SSH respondeu na porta 22.
-- VPS recomendada para etapa de deploy: `srv1577551.hstgr.cloud`.
-- Pendente: chave SSH autorizada ou acesso seguro.
+- VPS principal: `srv1577551.hstgr.cloud` - `2.24.30.151`.
+- Usuario operacional: `givrs`.
+- Usuario root: somente para administracao.
+- Chave SSH operacional no Windows: `C:\Users\aliss\.ssh\esperancita_hostinger_ed25519_nova`.
+- Nao usar mais a chave antiga `esperancita_hostinger_ed25519`.
+- Servico 24/7: `openclaw-esperancita.service`.
+- Gateway local na VPS: `127.0.0.1:18789`.
+- Antes de alterar workspace remoto: criar backup em `/home/givrs/.openclaw/backups/`.
 
 ## Comandos de verificacao
 
@@ -52,6 +53,7 @@ openclaw config validate
 openclaw gateway status
 openclaw models status
 openclaw skills check --agent main
+ssh -i $env:USERPROFILE\.ssh\esperancita_hostinger_ed25519_nova givrs@2.24.30.151
 git status --short --branch
 ```
 

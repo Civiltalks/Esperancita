@@ -14,6 +14,7 @@ Objetivo: fazer a Esperancita lembrar, revisar e avisar sem virar spam.
 - [x] **Pendencias quentes** - consultar `memory/hot.md` e `memory/context/pending.md`.
 - [x] **Backup/GitHub** - lembrar de commit/push quando houver mudancas versionaveis importantes.
 - [x] **Seguranca** - alertar se token aparecer em arquivo, log ou commit.
+- [x] **Memoria Super Esperancita** - verificar se respostas refletem identidade, missao, tom, criterios e limites dos arquivos `ESPERANCITA_*.md`.
 - [ ] **Agenda/calendario** - desativado ate integracao especifica ser autorizada.
 - [ ] **Email/inbox** - desativado ate conta e politica de leitura serem definidas.
 - [ ] **Mensagens proativas automaticas** - desativado ate o usuario aprovar frequencia.
@@ -29,6 +30,7 @@ Objetivo: fazer a Esperancita lembrar, revisar e avisar sem virar spam.
 
 - Gateway caiu e impede uso da Esperancita.
 - Telegram parou de responder.
+- Servico `openclaw-esperancita.service` ficou inativo na VPS.
 - Scan encontrou segredo em arquivo versionavel.
 - GitHub ficou divergente e ha risco de perda de trabalho.
 - Deploy/VPS esta em estado parcial e precisa decisao.

@@ -8,11 +8,17 @@ Antes de executar tarefas relevantes:
 
 1. Ler `IDENTITY.md`.
 2. Ler `SOUL.md`.
-3. Ler `USER.md`.
-4. Ler `MAPA.md`.
-5. Ler `MEMORY.md`.
-6. Consultar `memory/hot.md`.
-7. Consultar nota diaria em `memory/sessions/YYYY-MM-DD.md`, se existir.
+3. Ler `ESPERANCITA_PERSONALIDADE.md`.
+4. Ler `ESPERANCITA_TOM_DE_VOZ.md`.
+5. Ler `ESPERANCITA_FUNCIONAMENTO.md`.
+6. Ler `ESPERANCITA_CRITERIOS_OPERACIONAIS.md`.
+7. Ler `ESPERANCITA_MEMORIA_PERMANENTE.md`.
+8. Ler `ESPERANCITA_LIMITES_E_SEGURANCA.md`.
+9. Ler `USER.md`.
+10. Ler `MAPA.md`.
+11. Ler `MEMORY.md`.
+12. Consultar `memory/hot.md`.
+13. Consultar nota diaria em `memory/sessions/YYYY-MM-DD.md`, se existir.
 
 `BOOTSTRAP.md` fica apenas como referencia historica do starter kit. A Esperancita ja foi inicializada; nao repetir fluxo de nascimento.
 
@@ -30,6 +36,7 @@ Antes de executar tarefas relevantes:
 
 - Ler arquivos do workspace e dos relatorios.
 - Atualizar memoria com fatos nao sensiveis.
+- Responder sobre identidade, missao, tom e criterios da Esperancita usando os arquivos `ESPERANCITA_*.md`.
 - Criar ou atualizar documentos versionaveis.
 - Rodar validacoes locais como `openclaw config validate`, `openclaw skills check`, `git status`.
 - Fazer backup antes de mudanca estrutural.
@@ -38,7 +45,7 @@ Antes de executar tarefas relevantes:
 ## Pedir ou registrar pendencia antes de agir
 
 - Envio externo em nome do usuario.
-- Deploy em VPS sem SSH autorizado.
+- Alteracao administrativa na VPS sem necessidade real ou sem backup.
 - Criar webhook publico ou expor gateway fora de loopback.
 - Trocar bot Telegram ou resetar pareamento.
 - Alterar modelo principal para API key.
@@ -110,11 +117,13 @@ Nunca salvar token no remote URL.
 
 Estado atual:
 
-- API Hostinger validada.
-- VPS recomendada para SSH: `srv1577551.hstgr.cloud` (`2.24.30.151`).
-- Falta autorizar chave SSH ou fornecer acesso seguro.
+- VPS principal: `srv1577551.hstgr.cloud` (`2.24.30.151`).
+- Usuario operacional: `givrs`.
+- SSH por chave nova validado.
+- Servico 24/7: `openclaw-esperancita.service`.
+- Gateway local na VPS: `127.0.0.1:18789`.
 
-Sem SSH, apenas preparar plano/documentacao. Com SSH, executar instalacao bare metal Ubuntu 24.04.
+Operar primeiro como `givrs` e usar `root` apenas para tarefas administrativas. Nao reinstalar OpenClaw se o servico ja estiver saudavel.
 
 ## OpenAI
 

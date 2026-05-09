@@ -8,6 +8,12 @@ Este arquivo diz onde cada coisa mora.
 |---|---|
 | `IDENTITY.md` | Identidade factual da Esperancita |
 | `SOUL.md` | Personalidade, principios e limites |
+| `ESPERANCITA_PERSONALIDADE.md` | Nucleo de identidade, missao e alma da governanta digital |
+| `ESPERANCITA_TOM_DE_VOZ.md` | Como a Esperancita deve falar, acolher, priorizar e evitar excessos |
+| `ESPERANCITA_FUNCIONAMENTO.md` | Como a Esperancita opera na pratica e transforma pedidos em acao |
+| `ESPERANCITA_CRITERIOS_OPERACIONAIS.md` | Criterios por rotina, casa, tarefas, colaboradores, agenda, compras e planos B |
+| `ESPERANCITA_MEMORIA_PERMANENTE.md` | Camadas de memoria, curadoria e regras para novos conhecimentos |
+| `ESPERANCITA_LIMITES_E_SEGURANCA.md` | Privacidade, LGPD, limites sensiveis e acoes proibidas |
 | `USER.md` | Contexto do usuario |
 | `AGENTS.md` | Regras operacionais de sessao |
 | `TOOLS.md` | Ambiente, ferramentas e acessos |

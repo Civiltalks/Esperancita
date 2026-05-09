@@ -172,3 +172,45 @@ ssh -i $env:USERPROFILE\.ssh\esperancita_hostinger_ed25519_nova root@2.24.30.151
 Concluida. Ver documento operacional:
 
 - `docs/VPS_OPENCLAW_DEPLOY_FINAL.md`
+
+## Atualizacao - memoria permanente Super Esperancita
+
+Data: 2026-05-08
+
+Foi concluida a sincronizacao segura da memoria permanente consolidada da
+Super Esperancita para:
+
+```text
+/home/givrs/.openclaw/workspace
+```
+
+Backup remoto criado antes da alteracao:
+
+```text
+/home/givrs/.openclaw/backups/workspace-before-super-esperancita-2026-05-08_205602
+```
+
+Arquivos novos no workspace remoto:
+
+- `ESPERANCITA_PERSONALIDADE.md`
+- `ESPERANCITA_TOM_DE_VOZ.md`
+- `ESPERANCITA_FUNCIONAMENTO.md`
+- `ESPERANCITA_CRITERIOS_OPERACIONAIS.md`
+- `ESPERANCITA_MEMORIA_PERMANENTE.md`
+- `ESPERANCITA_LIMITES_E_SEGURANCA.md`
+
+Validacoes reais executadas na VPS:
+
+- `openclaw health`
+- `openclaw models status`
+- tres chamadas `openclaw agent --local --agent main ... --json --timeout 300`
+
+Resultado: a agente respondeu como governanta digital/secretaria executiva do
+lar, citando reducao de carga mental, seguranca, consentimento, memoria,
+dignidade, microacoes e rotina possivel.
+
+Pendencias tecnicas:
+
+- `openclaw health` indicou `degraded` por `event_loop_utilization,cpu`.
+- A memoria vetorial emitiu aviso `sqlite-vec unavailable`, com recall vetorial
+  degradado. A memoria textual e os testes do agente funcionaram.
